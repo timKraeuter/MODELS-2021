@@ -400,17 +400,22 @@ All the approaches use model checking to analyze behavioral consistency and foll
 However, the approaches cover only homogeneous scenarios where all models conform to one modeling language.
 An exception is the consistency checking between sequence diagrams and state charts.
 In practice one could encounter a situation where for example the combination of state machines, process algebras, petri nets and activity diagrams is desired\footnote{The merger of two companies and their IT-infrastructure could for example cause strong heterogeneity in the used modeling languages.}.
+Using our proposed approach it is possible to check behavioral consistency even in heterogeneous modeling scenarios.
+This leads to more freedom of choice regarding behavioral modeling and model combinations.
+In addition, behavioral models of higher quality can be achieved which lay the foundation for successful and effective \gls{mdse}.
 
-% Same motivation as to our work 
-% In contrast \cite{ptolemaeusSystemDesignModeling2014} considers a heterogeneous modeling environment in the domain of cyber-physical systems.
-
-% No consistency checking a simulation first approach
-
-% semantics later introduced.
-% \cite{tripakisModularFormalSemantics2013}
 \section{Proposed solution}
-% 1. Interrelate behavioral models just as with structural models (using for example comprehensive systems)
+% 1. Interrelate behavioral models just as with structural models (using for example comprehensive systems). Define metamodels and align them
+To check consistency for structural models one defines inter-relations between models on the meta-model level and on the model level to describe overlaps in information \cite{stunkelMultipleModelSynchronization2020} and then inter-model consistency.
+I propose a similar approach for behavioral models based on inter-model relations.
+The inter-model relations should define how behavioral models coordinate which leads to the behavior of the composite system consisting of all individual models.
+
+First one has to define which inter-model relations are allowed.
+I will do this by defining a metamodel 
+\ref{sec:currentStatus}
+
 % 2. Define the semantics for the composition/overall behavioral model which is constructed as the parallel execution of all the models to formally check behavioral consistency. (using graph grammars/ graph transformation systems --> calculate parallel rules)
+
 % 3. Implement a logic to formulate behavioral consistency which spans different models.
 \section{Plan for evaluation and validation}
 % Design science? --> Develop prototype to execute the combined model.
@@ -420,10 +425,10 @@ In practice one could encounter a situation where for example the combination of
 % Relating behavioral models (aligning the respective metamodels)
 % Semantics as a basis for behavioral consistency.
 % Advancement in behavioral/semantic consistency for more consistent models.
-\section{Current status}
+\section{Current status} \label{sec:currentStatus}
 % Example GG for FSM's, petri-nets and CCS/pi-calculus (process algebra representative).
 % (Activity diagrams and bpmn could also be interesting).
-% Gets complicated if the behavioral models get too detailed/ too expressive for graph transformations.
+% Gets complicated if the behavioral models get too detailed/ too expressive for graph transformations. We need to stay on a high level of abstraction
 % Align metamodels
 % Running example
 % Constraint check on the generated state space.
