@@ -313,13 +313,14 @@
 \newacronym{ct}{CT}{category theory}
 \newacronym{uml}{UML}{Unified Modelling Language}
 \newacronym{dsl}{DSL}{Domain Specific Language}
+\newacronym{csp}{CSP}{Communication Sequential Processes}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 
 \begin{document}
-\title{Bare Demo of IEEEtran.cls\\ for IEEE Conferences}
+\title{Integrating behavioral models\\ into multi modelling}
 
 \author{\IEEEauthorblockN{Tim Kräuter}
 \IEEEauthorblockA{Høgskulen på Vestlandet\\
@@ -372,12 +373,41 @@ Only using one formalism or modeling language for behavioral models is not feasi
 The modeling formalisms used in a given situation depends on the system requirements, existing software landscape and the knowledge, as well as preferences of the responsible developers. 
 
 % We have to deal with consistency between structural and behavioral models in the future as well. Since structural models are graphs, graph transformations seem promising to integrate this in the future.
-There can also arise inconsistencies between structural and behavioral models.
-For example x % see proposal
-I first want to focus on behavioral consistency before addressing consistency between structural and behavioral models. 
+There can also be consistency rules spanning structural and behavioral models.
+For example messages to objects in a \gls{uml} sequence diagram have to match the corresponding classes methods in an class diagram \cite{egyedFixingInconsistenciesUML2007}.
+I will focus on behavioral consistency before addressing consistency between structural and behavioral models in the future. 
 \section{Related work}
-% cite the work on behavioral consistency in the mdse field
-% cite the work on heterogeneous models / simulation for cyber physical systems (Ptolemy and so on).
+% Engels
+In \cite{engelsMethodologySpecifyingAnalyzing2001} they work on consistency of object-oriented behavioral models formulated as capsule state charts in \gls{uml}-RT.
+% They are restricted to UML behavioral models --> homo case
+Consequently, they are dealing with a homogeneous modeling environment where all behavioral models are formulated in the same modeling language.
+The authors use the term semantic consistency instead of behavioral consistency.
+To check behavioral consistency they map state chart models to \gls{csp}.
+Using the well-defined semantics of \gls{csp} they validate deadlock freeness and the processes compliance to a previously defined communication protocol.
+Their proposed general methodology to analyze consistency is to find a suitable semantic domain and map the models into it.
+The semantic domain can then be exploited to check consistency.
+
+Based on this methodology consistency checking for sequence diagrams and state charts was developed in \cite{kusterExplicitBehavioralConsistency2003}.
+The consistency requirement is that all possible interactions specified within sequence diagrams for each class should be possible regarding the behavior of that class specified in a state chart.
+As a semantic domain the authors have successfully used \gls{csp} again.
+
+Besides process algebras such as \gls{csp} different types of petri nets are used for behavioral consistency checking.
+In \cite{yaoConsistencyCheckingUML2006} petri nets were used to check consistency for sequence diagrams and state charts.
+\cite{cunhaFormalVerificationUML2011} analyses sequence diagrams in the context of embedded systems using a transformation to petri nets.
+Consistency for \gls{uml} activity diagrams was checked using petri nets in \cite{thierry-miegUMLBehavioralConsistency2008}.
+
+All the approaches use model checking to analyze behavioral consistency and follow the methodology defined in \cite{engelsMethodologySpecifyingAnalyzing2001} with variations in the semantic domain.
+However, the approaches cover only homogeneous scenarios where all models conform to one modeling language.
+An exception is the consistency checking between sequence diagrams and state charts.
+In practice one could encounter a situation where for example the combination of state machines, process algebras, petri nets and activity diagrams is desired\footnote{The merger of two companies and their IT-infrastructure could for example cause strong heterogeneity in the used modeling languages.}.
+
+% Same motivation as to our work 
+% In contrast \cite{ptolemaeusSystemDesignModeling2014} considers a heterogeneous modeling environment in the domain of cyber-physical systems.
+
+% No consistency checking a simulation first approach
+
+% semantics later introduced.
+% \cite{tripakisModularFormalSemantics2013}
 \section{Proposed solution}
 % 1. Interrelate behavioral models just as with structural models (using for example comprehensive systems)
 % 2. Define the semantics for the composition/overall behavioral model which is constructed as the parallel execution of all the models to formally check behavioral consistency. (using graph grammars/ graph transformation systems --> calculate parallel rules)
