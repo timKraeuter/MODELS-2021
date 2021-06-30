@@ -417,10 +417,16 @@ I propose a similar approach for behavioral models based on inter-model relation
 The inter-model relations should define how behavioral models coordinate which leads to the behavior of the composite system consisting of all individual models.
 
 First one has to define which inter-model relations are allowed.
-I will do this by defining a metamodel 
-\ref{sec:currentStatus}
+I will accomplish this by model-weaving on the metamodel-level, i.e. defining a metamodel for the inter-model relations.
+This is also called \textit{metamodel alignment} and a key activity in the multi-model consistency management process \cite{stunkelMultipleModelSynchronization2020}.
+For this approach to work metamodels for the used models have to be present.
+However, developing a metamodel if not already present is a one-time expense.
+Similarly metamodel alignment has to be only done once.
+In section \ref{sec:currentStatus} we will align the metamodels for state machines, petri nets and the $\pi$-calculus.
+In the future other formalisms can be integrated in a similar way.
 
 % 2. Define the semantics for the composition/overall behavioral model which is constructed as the parallel execution of all the models to formally check behavioral consistency. (using graph grammars/ graph transformation systems --> calculate parallel rules)
+
 
 % 3. Implement a logic to formulate behavioral consistency which spans different models.
 \section{Plan for evaluation and validation}
