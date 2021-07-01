@@ -462,8 +462,11 @@ In the best case the specification of constraints is independent of the semantic
 Besides checking general properties such as deadlocks or simple safety properties, users must be able to define more complex properties in a temporal logic.
 I aim to reuse existing model checkers for evaluating these formulas on the calculated Kripke structure.
 \section{Plan for evaluation and validation}
-% Design science? --> Develop prototype to execute the combined model.
-% Evaluate using examples/case studies (hopefully from practice). Check performance
+To evaluate our methodology I plan to implement a tool for behavioral consistency checking.
+It should come with a textual \gls{dsl} for meta model and model alignment, transformations to the semantic domain and an implementation of the semantic domain including consistency verification.
+For graph grammars one can use tools like GROOVE \cite{ghamarianModellingAnalysisUsing2012, rensinkGROOVESimulatorTool2004} or Verigraph \cite{costaVerigraphSystemSpecification2016} to generate a state space from a graph grammar.
+Especially the performance of graph grammars as a semantic domain has to be critically evaluated.
+If the prototype can handle artificial scenarios successfully one can move on to industry case studies.
 
 \section{Expected contributions}
 % Relating behavioral models (aligning the respective metamodels)
