@@ -306,6 +306,13 @@
 % (Unless specifically asked to do so by the journal or conference you plan
 % to submit to, of course. )
 
+\usepackage{hyperref} % for autoref
+\usepackage{amsthm} % for proofs
+\usepackage{amsmath} % theorems, definitions, etc.
+\usepackage{amssymb} % \mathbb
+\newtheorem{definition}{Definition}
+\newcommand{\definitionautorefname}{Definition}
+
 \usepackage{glossaries}
 
 \newacronym{mdse}{MDSE}{Model-driven software engineering}
@@ -337,9 +344,9 @@ Behavioral models play an important role in \gls{mdse}.
 Keeping inter-related behavioral models consistent is essential to use them in \gls{mdse} successfully. 
 However, consistency checking for behavioral models, especially in a heterogeneous scenario, is limited.
 
-In this paper, I propose a framework to integrate heterogeneous behavioral modeling languages such that consistency checking can be achieved in broader scenarios.
+In this paper, I propose a methodology to integrate heterogeneous behavioral modeling languages such that consistency checking can be achieved in broader scenarios.
 It is based on aligning the respective behavioral metamodels by defining possible inter-model relations which carry behavioral meaning.
-Converting the models together with their relations to a behavioral formalism enables analysis of behavioral consistency using model-checking. 
+Converting the models together with their relations to a behavioral formalism enables analysis of global behavioral consistency using model-checking. 
 \end{abstract}
 
 % no keywords
@@ -360,7 +367,7 @@ Without this inter-model consistency \gls{mdse} cannot deliver on the promised i
 This is especially problematic when the used models are heterogeneous.
 Firstly, there exist structural models such as class diagrams and entity-relationship diagrams.
 Secondly, behavioral diagrams are used to describe the dynamics of a system.
-Widely used diagrams or formalisms for specifying behavior are state machines, activity diagrams, Petri nets and process algebras.
+Widely used diagrams or formalisms for specifying behavior are state machines, activity diagrams, petri nets and process algebras.
 
 % We already deal with structural models/ consistency
 Inter-model consistency for structural models has been researched extensively.
@@ -413,13 +420,13 @@ In addition, behavioral models of higher quality can be achieved which lay the f
 \section{Proposed solution}
 % this basically extends the methodology presented in the engels paper. Maybe we should write that
 The proposed solution extends the methodology presented in \cite{engelsMethodologySpecifyingAnalyzing2001} by incorporating a new step from the multi-model consistency management process targeted towards structural models defined in \cite{stunkelMultipleModelSynchronization2020}.
-The proposed solution can be summarized in the four-step process in Figure \ref{fig:consistency_process} and will now  be explained in detail.
+The proposed solution can be summarized in the four-step process in \autoref{fig:consistency_process} and will now  be explained in detail.
 
-\begin{figure}[!t]
-\centering
-\includegraphics[width=3.4in]{methodology}
-\caption{Behavioral Consistency Management Process}
-\label{fig:consistency_process}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3.4in]{methodology}
+    \caption{Behavioral Consistency Management Process}
+    \label{fig:consistency_process}
 \end{figure}
 
 % 1. Metamodel and model aligment
@@ -433,7 +440,7 @@ This is also called \textit{metamodel alignment} and is a key activity in the mu
 For this approach to work, there has to be a metamodel for used model.
 However, developing a metamodel if it is not already present is a one-time expense.
 Similarly metamodel alignment has to be only done once.
-In section \ref{sec:currentStatus} we will align the metamodels for state machines, petri nets and the $\pi$-calculus.
+In \autoref{sec:currentStatus} we will align the metamodels for state machines, petri nets and the $\pi$-calculus.
 In the future other formalisms can be integrated in a similar way.
 After aligning the metamodels one can define inter-model relations between the behavioral models, i.e. align the models.
 For example, the synchronisation of a transition in a state machine with a transition in a petri net could be specified.
@@ -443,7 +450,7 @@ The second activity in the process is to transform the models into a suitable se
 By including the inter-model relations in the transformation we can deal with a heterogeneous modeling scenario compared to the original methodology in \cite{engelsMethodologySpecifyingAnalyzing2001}.
 A feasible approach is to translate each model individually and then combine them according to the defined inter-model relations.
 
-We will use graph grammars as a behavioral formalism for the models (see section \ref{sec:currentStatus}) because of the following reasons.
+We will use graph grammars as a behavioral formalism for the models (see \autoref{sec:currentStatus}) because of the following reasons.
 Many behavioral formalism have been described by graph grammars for example state machines \cite{kuskeFormalSemanticsUML2001, varroFormalSemanticsUML2002}, petri nets \cite{ehrigGraphGrammarsPetri2004} and the $\pi$-calculus \cite{gadducciGraphRewritingPcalculus2007}.
 By using graph grammars one stays on a higher level of abstraction compared to for example transitions systems as a semantic domain.
 This has the advantage that the state space generated by graph grammars is better understandable.
@@ -463,16 +470,69 @@ Besides checking general properties such as deadlocks or simple safety propertie
 I aim to reuse existing model checkers for evaluating these formulas on the calculated Kripke structure.
 \section{Plan for evaluation and validation}
 To evaluate our methodology I plan to implement a tool for behavioral consistency checking.
-It should come with a textual \gls{dsl} for meta model and model alignment, transformations to the semantic domain and an implementation of the semantic domain including consistency verification.
+It should come with a textual \gls{dsl} for metamodel and model alignment, transformations to the semantic domain and an implementation of the semantic domain including consistency verification.
 For graph grammars one can use tools like GROOVE \cite{ghamarianModellingAnalysisUsing2012, rensinkGROOVESimulatorTool2004} or Verigraph \cite{costaVerigraphSystemSpecification2016} to generate a state space from a graph grammar.
 Especially the performance of graph grammars as a semantic domain has to be critically evaluated.
 If the prototype can handle artificial scenarios successfully one can move on to industry case studies.
 
 \section{Expected contributions}
 % Relating behavioral models (aligning the respective metamodels)
-% Semantics as a basis for behavioral consistency.
+% Integrating them better in the consistency management process
+
+% Semantics as a basis for behavioral consistency. Especially for the inter-model relations
+
 % Advancement in behavioral/semantic consistency for more consistent models.
 \section{Current status} \label{sec:currentStatus}
+My work on behavioral consistency has just started, such that only the first two activities in the consistency management process (see \autoref{fig:consistency_process}) have been investigated.
+So far finite state machines, petri nets and the $\pi$-calculus have been considered as behavioral models/formalisms.
+I will now define finite state machines and petri nets, state their respective metamodels and align them.
+% Model alignment for FSM's <--> petri nets and FSM's/Petri nets <--> pi-calculus
+
+\begin{definition}[Finite state machines] \label{def:fsm}
+    A finite state machine $M=(S, \Sigma, \delta, s_0, F)$ consists of a set of states $S$, a finite alphabet $\Sigma$, a state transition relation $\delta \subseteq S \times \Sigma \times S$, an initial state $s_0 \in S$ and a set of final states $F \subseteq S$ \cite{kunzeBehaviouralModelsModelling2016}. % Def. 3.2
+\end{definition}
+
+\autoref{fig:fsm_metamodel} depicts the metamodel $M^1$ for finite state machines.
+In addition to \autoref{def:fsm}, we added names to states and state machines.
+The clouds in \autoref{fig:fsm_metamodel} depict concrete syntax elements inspired by \gls{uml} state charts.
+
+% can be put sideways if we need the space
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=2in]{state_machine_metamodel}
+    \caption{Finite state machine metamodel $M^1$}
+    \label{fig:fsm_metamodel}
+\end{figure}
+
+\begin{definition}[Petri net] \label{def:pn}
+    A petri net $N=(P,T,F, \omega)$ consists of a finite set of places $P$, a non-empty finite set of transitions $T$ ($T \cap P = \emptyset $), a flow relation $F \subseteq (P \times T) \cup (T \times P)$, and a weighting function $\omega: F \to \mathbb{N}$ \cite{kunzeBehaviouralModelsModelling2016}. % Def. 4.1 + 4.4 for weights
+\end{definition}
+
+\autoref{fig:petri_net_metamodel} illustrates the metamodel $M^2$ for petri nets\footnote{Formally edges representing elements of the flow relation can have transitions or places as source and target which does not conform to \autoref{def:pn}.
+We will ignore this issue for now, since we do not want to introduce constraints to the metamodel.}.
+In addition to \autoref{def:pn} places have a set of tokens, since we want to model states of petri nets which are token distributions.
+We again added names to transitions, places, edges and the petri net itself and concrete syntax elements. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3in]{petri_net_metamodel}
+    \caption{Petri net metamodel $M^2$}
+    \label{fig:petri_net_metamodel}
+\end{figure}
+
+% \begin{definition}[$\pi$-calculus processes]
+%     $\mathcal{N}$ \cite{gadducciGraphRewritingPcalculus2007}
+% \end{definition}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3.4in]{pi_metamodel}
+    \caption{$\pi$-calculus metamodel $M^3$}
+    \label{fig:pi_metamodel}
+\end{figure}
+
+% Transformation of FSM's, petri-nets and maybe the pi-calculus.
+
 % Example GG for FSM's, petri-nets and CCS/pi-calculus (process algebra representative).
 % (Activity diagrams and bpmn could also be interesting).
 % Gets complicated if the behavioral models get too detailed/ too expressive for graph transformations. We need to stay on a high level of abstraction
