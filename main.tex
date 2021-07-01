@@ -515,7 +515,7 @@ We again added names to transitions, places, edges and the petri net itself and 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=3in]{petri_net_metamodel}
+    \includegraphics[width=3.4in]{petri_net_metamodel}
     \caption{Petri net metamodel $M^2$}
     \label{fig:petri_net_metamodel}
 \end{figure}
@@ -524,11 +524,23 @@ We again added names to transitions, places, edges and the petri net itself and 
 %     $\mathcal{N}$ \cite{gadducciGraphRewritingPcalculus2007}
 % \end{definition}
 
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=3.4in]{pi_metamodel}
+%     \caption{$\pi$-calculus metamodel $M^3$}
+%     \label{fig:pi_metamodel}
+% \end{figure}
+
+Aligning the metamodels for finite state machines and petri nets is straight-forward since both formalisms rely on transitions to change the application state.
+Consequently, transitions are aligned, as shown in \autoref{fig:fsm_pn_alignment}.
+The inter-model relation relating the two is called synchronous communication and should be interpreted at two transitions firing at the same time in a semantic domain.
+One could also add a inter-model relation for asynchronous communication between transitions.
+
 \begin{figure}[h]
     \centering
-    \includegraphics[width=3.4in]{pi_metamodel}
-    \caption{$\pi$-calculus metamodel $M^3$}
-    \label{fig:pi_metamodel}
+    \includegraphics[width=3.4in]{fsm_pn_alignment}
+    \caption{Alignment of the metamodels $M^1$ and $M^2$}
+    \label{fig:fsm_pn_alignment}
 \end{figure}
 
 % Transformation of FSM's, petri-nets and maybe the pi-calculus.
