@@ -342,7 +342,7 @@ Email: tkra@hvl.no}}
 % in the abstract
 \begin{abstract}
 Behavioral models play an essential role in \gls{mdse}.
-Keeping inter-related behavioral models consistent is critical to use them in \gls{mdse} successfully. 
+Keeping inter-related behavioral models consistent is critical to use them successfully in \gls{mdse}. 
 However, consistency checking for behavioral models, especially in a heterogeneous scenario, is limited.
 
 I propose a methodology to integrate heterogeneous behavioral models to achieve consistency checking in broader scenarios.
@@ -365,7 +365,7 @@ However, this separation of concerns causes problems because models must be kept
 Without this inter-model consistency, \gls{mdse} cannot deliver on the promised increase of productivity and reduction of errors \cite{brambillaModeldrivenSoftwareEngineering2017}.
 
 % MDSE is heterogeneous and has to be kept consistent.
-This is especially problematic when the used models are heterogeneous.
+This is especially problematic when the used models are heterogeneous:
 Firstly, there exist structural models such as class diagrams and entity-relationship diagrams.
 Secondly, behavioral diagrams are used to describe the dynamics of a system.
 Widely used diagrams or formalisms for specifying behavior are state machines, activity diagrams, petri nets, and process algebras.
@@ -375,10 +375,10 @@ Inter-model consistency for structural models has been researched extensively.
 One promising approach is model weaving \cite{bezivinCanonicalSchemeModel2006}, which establishes links between models with the goal of automatic consistency checking.
 Typically, these inter-relations focus on structural aspects, such as identity, usage, dependency, refinement, etc. \cite{feldmannManagingIntermodelInconsistencies2019, torresSystematicLiteratureReview2020}.
 They are called \textit{correspondences} on the metamodel level and \textit{commonalities} on the model level \cite{stunkelMultipleModelSynchronization2020, klareCommonalitiesPreservingConsistency2019}.
-Inter-model constraints can then be defined and automatically checked on a global model obtained using commonalities to merge individual models \cite{stunkelMultimodelCorrespondenceIntermodel2018} or establish a comprehensive view of the overall model \cite{stunkelMultipleModelSynchronization2020}.
+Inter-model constraints can then be defined and automatically be checked on a global model obtained using commonalities to merge individual models \cite{stunkelMultimodelCorrespondenceIntermodel2018} or establish a comprehensive view of the overall model \cite{stunkelMultipleModelSynchronization2020}.
 
 % We have to deal with behavioral/semantic consistency between behavioral models especially of heterogeneous nature
-However, there is no general approach to check behavioral consistency, sometimes also called semantic consistency.
+However, there is no general approach to check joint behavioral consistency on a collection of models, sometimes also called semantic consistency.
 Behavioral models describing interacting parts of a system should be checked for deadlocks, live-locks, or other system-specific requirements.
 This is generally not problematic if the models conform to the same formalism or modeling language.
 But in a heterogeneous case, one still wants to define interactions between the models and check behavioral consistency.
@@ -393,7 +393,7 @@ I will focus on behavioral consistency before addressing consistency between str
 
 \section{Related work}
 % Engels
-In \cite{engelsMethodologySpecifyingAnalyzing2001}, they work on the consistency of object-oriented behavioral models formulated as capsule state charts in \gls{uml}-RT.
+\cite{engelsMethodologySpecifyingAnalyzing2001} investigate the consistency of object-oriented behavioral models formulated as capsule state charts in \gls{uml}-RT.
 % They are restricted to UML behavioral models --> homo case
 Consequently, they deal with a homogeneous modeling environment where all behavioral models are developed in the same modeling language.
 The authors use the term semantic consistency instead of behavioral consistency.
@@ -403,7 +403,7 @@ Their proposed general methodology to analyze consistency is to find a suitable 
 The semantic domain can then be exploited to check the consistency.
 
 Based on this methodology, consistency checking for sequence diagrams and state charts was developed in \cite{kusterExplicitBehavioralConsistency2003}.
-The consistency requirement is that all possible interactions specified within sequence diagrams for each class should be possible regarding the behavior of that class defined in a state chart.
+The consistency requirement claims that all possible interactions specified within sequence diagrams for each class should be possible regarding the behavior of that class defined in a state chart.
 As a semantic domain, the authors have successfully used \gls{csp} again.
 
 Besides process algebras such as \gls{csp}, different types of petri nets are used for behavioral consistency checking.
@@ -451,10 +451,10 @@ The second activity in the process is to transform the models into a suitable se
 By including the inter-model relations in the transformation, we can deal with a heterogeneous modeling scenario compared to the original methodology in \cite{engelsMethodologySpecifyingAnalyzing2001}.
 A feasible approach is to translate each model individually and then combine them according to the defined inter-model relations.
 
-We will use graph grammars as a behavioral formalism for the models (see \autoref{sec:currentStatus}) because of the following reasons.
+We will use graph grammars as a behavioral formalism for the model execution (see \autoref{sec:currentStatus}) because of the following reasons.
 Many behavioral formalisms have been described by graph grammars, for example, state machines \cite{kuskeFormalSemanticsUML2001, varroFormalSemanticsUML2002}, petri nets \cite{ehrigGraphGrammarsPetri2004}, the $\pi$-calculus \cite{gadducciGraphRewritingPcalculus2007}, and workflow models \cite{rutleMetamodellingApproachBehavioural2012}.
 Using graph grammars, one stays on a higher level of abstraction than, for example, transitions systems as a semantic domain.
-This has the advantage that the state space generated by graph grammars is more understandable.
+This has the advantage that the state space generated by graph grammars is better understandable.
 Counterexamples for consistency constraints should also be easier to understand because we stay closer to the original modeling formalisms using graph grammars.
 In addition, structural models are formalized as graphs or graph-like structures \cite{stunkelMultipleModelSynchronization2020}, which can lead to an integration of behavioral and structural models using graph transformations in the future. 
 
@@ -466,7 +466,7 @@ The third and fourth step in the process are concerned with specifying and verif
 We assume there is a set of atomic propositions for each model, such that we can calculate their disjoint union.
 The semantic domain should generate a state space for the overall system somehow connected to the original models to attach the atomic propositions from the individual models to the generated state space.
 Thus, one gets a Kripke structure to check behavioral constraints.
-In the best case, the specification of constraints is independent of the semantic domain choice.
+In the best case, the specification of constraints is independent of the choice of the semantic domain.
 Besides checking general properties such as deadlocks or simple safety properties, users must be able to define more complex properties in temporal logic.
 I aim to reuse existing model checkers for evaluating these formulas on the calculated Kripke structure.
 \section{Plan for evaluation and validation}
@@ -496,6 +496,7 @@ I will now define finite state machines and petri nets, state their respective m
 
 \autoref{fig:fsm_metamodel} depicts the metamodel $M^1$ for finite state machines.
 In addition to \autoref{def:fsm}, we added names to states and state machines.
+The finite alphabet $\Sigma$ is not made explicit but can be derived by the transition names of a given state machine.
 The clouds in \autoref{fig:fsm_metamodel} depict concrete syntax elements inspired by \gls{uml} state charts.
 
 % can be put sideways if we need the space
@@ -545,7 +546,7 @@ It reflects the recursive syntax from \autoref{def:pi_processes}.
 
 Aligning the metamodels for finite state machines and petri nets is straightforward since both formalisms rely on transitions to change the application state.
 Consequently, transitions are aligned, as shown in \autoref{fig:fsm_pn_alignment}.
-The inter-model relation relating the two is called synchronous communication and should be interpreted as two transitions firing simultaneously in a semantic domain.
+The inter-model relation relating the two is called synchronous communication and should be interpreted as two transitions firing simultaneously, i.e., handshaking in a semantic domain.
 One could also add an inter-model relation for asynchronous communication between transitions.
 
 \begin{figure}[h]
@@ -555,13 +556,13 @@ One could also add an inter-model relation for asynchronous communication betwee
     \label{fig:fsm_pn_alignment}
 \end{figure}
 
-It is sufficient to interpret \autoref{fig:fsm_pn_alignment} as defining the existence of a set of pairs of transitions $SynchCom \subseteq \delta \times F$.
+It is sufficient to interpret \autoref{fig:fsm_pn_alignment} as defining the existence of a set of pairs of transitions $SynchCom \subseteq \delta \times T$.
 A different formalization suitable for more complex model alignments is the comprehensive system construction \cite{stunkelMultipleModelSynchronization2020}.
 
 % Transformation of FSM's, petri-nets and maybe the pi-calculus.
-We will choose graph grammars as a semantic domain for the reasons stated earlier, but one could also choose a different domain or switch in the future.
+I will choose graph grammars as a semantic domain for the reasons stated earlier, but one could also choose a different domain or switch in the future.
 Our approach is to transform each model into a graph grammar and combine the resulting grammars to realize the defined coordination between the models.
-We will explain the transformation to graph grammars for state machines, petri nets, and their coordination using a minimal example.
+I will explain the transformation to graph grammars for state machines, petri nets, and their coordination using a minimal example.
 \autoref{fig:fsm_pn_coordination} depicts a petri net $A^1$, a state machine $A^2$, and a synchronization for the transitions $t$ and $tr$ using the concrete syntax elements introduced earlier.
 
 \begin{figure}[h]
@@ -580,7 +581,7 @@ A production rule $P= L \overset{l}{\leftarrow} K \overset{r}{\to} R$ consists o
 
 % Transformation petri net
 The transformation from petri nets to graph grammars is based on the semantics defined in \cite{ehrigGraphGrammarsPetri2004}.
-We assume that the token distribution in a petri-net model $pn$ corresponds to its initial state.
+I assume that the token distribution in a petri-net model $pn$ corresponds to its initial state.
 The start graph is then given by the graph, which only contains the places and tokens from $pn$.
 Each transition is transformed to a production rule which removes tokens from the incoming places of the transition and adds tokens to the outgoing places of the transition according to the defined weights.
 For the petri net $A^1$, the resulting graph grammar will have one rule, which removes two tokens from the place $p1$ and adds one token to the place $p2$.
@@ -592,7 +593,7 @@ Consequently, during the execution of a state machine, the corresponding graph w
 
 % show combined start state for the sample and the combined rule
 Combining two graph grammars for state machines or petri nets is given by the union of start states and merging the production rules.
-All production rules without synchronization are carried over unchanged.
+All production rules without synchronization carry over unchanged.
 Every pair in \textit{SynchCom} leads to one rule where the three graphs of the rule are the component-wise union of the two underlying rules.
 For example, the synchronization in \autoref{fig:fsm_pn_coordination} leads to the rule shown in \autoref{fig:combined_rule}.
 
