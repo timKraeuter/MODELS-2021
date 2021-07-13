@@ -420,7 +420,7 @@ This leads to more freedom of choice regarding behavioral modeling and model com
 In addition, behavioral models of higher quality can be achieved, which lay the foundation for successful and effective \gls{mdse}.
 
 \section{Proposed solution}
-The proposed solution extends the methodology presented in \cite{engelsMethodologySpecifyingAnalyzing2001} by incorporating a new step inspired by the multi-model consistency management process for structural models defined in \cite{stunkelMultipleModelSynchronization2020}.
+The proposed solution builds on the methodology presented in \cite{engelsMethodologySpecifyingAnalyzing2001} but contains a new step inspired by the multi-model consistency management process for structural models defined in \cite{stunkelMultipleModelSynchronization2020}.
 The proposed solution can be summarized by the four-step process in \autoref{fig:consistency_process} and will now  be explained in detail.
 
 \begin{figure}[h]
@@ -429,13 +429,19 @@ The proposed solution can be summarized by the four-step process in \autoref{fig
     \caption{Behavioral Consistency Management Process}
     \label{fig:consistency_process}
 \end{figure}
+% 1. Consistency specification
+A potential consistency problem for a set of behavioral models triggers the consistency management process.
+The potential problem should be first discussed and stated informally.
 
-% 1. Metamodel and model aligment
+To formalize it as a constraint one should add atomic propositions to the states of the individual models with the problem in mind.
+Then, we can calculate the disjoint union of all atomic propositions and use this set of propositions to formalize our constraint in a temporal logic as if we had one model describing the joint system described by all models.
+
+% 2. Metamodel and model aligment
 To check inter-model consistency for structural models, one defines inter-relations between models on the metamodel level and the model level to describe overlaps in information \cite{stunkelMultipleModelSynchronization2020}.
 I propose a similar approach for behavioral models based on inter-model relations.
 The inter-model relations should define how behavioral models coordinate, leading to the composite system's behavior consisting of all individual models.
 
-The first step is to define which inter-model relations are allowed.
+The second step is to define which inter-model relations are allowed.
 I will accomplish this by model-weaving on the metamodel level, i.e., by defining a metamodel for the inter-model relations.
 This is also called \textit{metamodel alignment} and is a key activity in the multi-model consistency management process \cite{stunkelMultipleModelSynchronization2020}.
 For this approach to work, there has to be a metamodel for each used model.
@@ -446,8 +452,8 @@ In the future, other formalisms can be integrated similarly.
 After aligning the metamodels, one can define inter-model relations between the behavioral models, i.e., align the models.
 For example, the synchronization of a transition in a state machine with a transition in a petri net could be specified.
 
-% 2. Transformation to a semantic domain (proposes graph grammars)
-The second activity in the process is to transform the models into a suitable semantic domain respecting their inter-model relations.
+% 3. Transformation to a semantic domain (proposes graph grammars)
+The third step in the process is to transform the models into a suitable semantic domain respecting their inter-model relations.
 By including the inter-model relations in the transformation, we can deal with a heterogeneous modeling scenario compared to the original methodology in \cite{engelsMethodologySpecifyingAnalyzing2001}.
 A feasible approach is to translate each model individually and then combine them according to the defined inter-model relations.
 
@@ -460,15 +466,18 @@ In addition, structural models are formalized as graphs or graph-like structures
 
 However, the semantic domain is interchangeable as long as there is an interpretation for the given models and their inter-relations.
 
-% 3. Consistency specification in some temporal logic
-%. 4. Consistency Verification
-The third and fourth step in the process are concerned with specifying and verifying behavioral consistency.
-We assume there is a set of atomic propositions for each model, such that we can calculate their disjoint union.
-The semantic domain should generate a state space for the overall system somehow connected to the original models to attach the atomic propositions from the individual models to the generated state space.
+% 4. Consistency Verification
+The fourth step in the process is concerned with verifying the specified behavioral consistency.
+The semantic domain should generate a state space for the overall system connected to the original models to attach the atomic propositions from the individual models to the generated state space.
 Thus, one gets a Kripke structure to check behavioral constraints.
-In the best case, the specification of constraints is independent of the choice of the semantic domain.
-Besides checking general properties such as deadlocks or simple safety properties, users must be able to define more complex properties in temporal logic.
-I aim to reuse existing model checkers for evaluating these formulas on the calculated Kripke structure.
+Besides checking general properties such as deadlocks, the model specific constraints defined in step one should be checked.
+I aim to reuse existing model checkers for evaluating them on the calculated Kripke structure.
+
+In the best case, the specification of constraints is independent of the choice of the semantic domain, such that the behavioral constraints can be checked automatically.
+Generally, user input is also possible in this step if the chosen semantic domain does not exactly match the previously defined constraints.
+However, this is not desirable, since the semantic domain should be irrelevant for the user when specifying and checking constraints.
+There just has to be a suitable implementation of a semantic domain.
+
 \section{Plan for evaluation and validation}
 To evaluate our methodology, I plan to implement a tool for behavioral consistency checking.
 It should come with a textual \gls{dsl} for metamodel and model alignment, transformations to the semantic domain, and the semantic domain's implementation, including consistency verification.
