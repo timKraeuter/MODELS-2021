@@ -433,7 +433,7 @@ The proposed solution can be summarized by the four-step process in \autoref{fig
 A potential consistency problem for a set of behavioral models triggers the consistency management process.
 The potential problem should be first discussed and stated informally.
 
-To formalize it as a constraint one should add atomic propositions to the states of the individual models with the problem in mind.
+To formalize it as a constraint, one should add atomic propositions to the states of the individual models with the problem in mind.
 Then, we can calculate the disjoint union of all atomic propositions and use this set of propositions to formalize our constraint in a temporal logic as if we had one model describing the joint system described by all models.
 
 % 2. Metamodel and model aligment
@@ -470,13 +470,12 @@ However, the semantic domain is interchangeable as long as there is an interpret
 The fourth step in the process is concerned with verifying the specified behavioral consistency.
 The semantic domain should generate a state space for the overall system connected to the original models to attach the atomic propositions from the individual models to the generated state space.
 Thus, one gets a Kripke structure to check behavioral constraints.
-Besides checking general properties such as deadlocks, the model specific constraints defined in step one should be checked.
+Besides checking general properties such as deadlocks, the model-specific constraints defined in step one should be checked.
 I aim to reuse existing model checkers for evaluating them on the calculated Kripke structure.
 
 In the best case, the specification of constraints is independent of the choice of the semantic domain, such that the behavioral constraints can be checked automatically.
 Generally, user input is also possible in this step if the chosen semantic domain does not exactly match the previously defined constraints.
-However, this is not desirable, since the semantic domain should be irrelevant for the user when specifying and checking constraints.
-There just has to be a suitable implementation of a semantic domain.
+However, this is not desirable since the semantic domain should be mostly hidden from the user.
 
 \section{Plan for evaluation and validation}
 To evaluate our methodology, I plan to implement a tool for behavioral consistency checking.
