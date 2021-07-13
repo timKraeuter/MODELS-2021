@@ -493,9 +493,39 @@ I plan to make the following contributions:
 \end{itemize}
 Besides these theoretical contributions, I plan to develop a modeling tool for metamodel and model alignment and behavioral consistency checking using the proposed methodology.
 \section{Current status} \label{sec:currentStatus}
-My work on behavioral consistency has just started, such that only the first two activities in the consistency management process (see \autoref{fig:consistency_process}) have been investigated.
-So far, finite state machines, petri nets, and the $\pi$-calculus have been considered as behavioral models/formalisms.
-I will now define finite state machines and petri nets, state their respective metamodels, and align them.
+My work on behavioral consistency has just started, such that only the first three activities in the consistency management process (see \autoref{fig:consistency_process}) have been investigated.
+So far, finite state machines and petri nets have been considered as behavioral models/formalisms.
+
+We will use the the example models depicted in \autoref{fig:running_example} to explain the current status of our work by following the proposed methodology.
+\autoref{fig:running_example} depicts three state machine $SM^1$-$SM^3$ and a petri net $N^1$ (ignore the cyan connections for now).
+As a convention petri net edges have the weight one if not explicitly stated otherwise.
+The state machines $SM^1$ and $SM^2$ represent two resources which can be acquired and released by the processes defined by the models $SM^3$ and $N_1$.
+$SM^3$ acquires both resources does some work and then releases them again, while the three processes modelled in the petri net $N^1$ only need one of the two resources to do their work.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3.48in]{example}
+    \caption{Example models $SM^1$, $SM^2$, $SM^3$, $N^1$, and their coordination}
+    \label{fig:running_example}
+\end{figure}
+
+The models depicted in \autoref{fig:running_example} describe four processes and two shared resources.
+What exactly the processes are working on is kept abstract but we often face situations in which multiple processes are accessing the same resources.
+A reasonable requirement for the overall system resulting from running the models would be that all processes always finish their execution and that each resource is accessed by at most one process at a time.
+Thus we formulate the following constraints:
+\begin{enumerate}
+    \item \textbf{Successful termination:} The state, where both resources are available while $SM^3$ is in its final state and $N^1$ has three tokens in the place \textit{end}, should eventually be reached.
+    \item \textbf{Proper resource 1 access:} There can be at most one token in the places \textit{r1} while $SM^3$ is in the state start or end.
+    If $SM^3$ is not in the start or end state there must be no token in the places \textit{r1}.
+    \item \textbf{Proper resource 2 access:} There can be at most one token in the places \textit{r2} while $SM^3$ is not in the state work.
+    If $SM^3$ is in the state work there must be no token in the places \textit{r2}.
+\end{enumerate}
+
+The constraints can be formalized using temporal logic by assigning appropriate atomic propositions to the mentioned states.
+The first constraint can be seen as a liveness property while the second and third constraint describe safety properties.
+
+To check our constraints we need to define finite state machines and petri nets, state their respective metamodels, and align them.
+After that, we can align the models of our running example depicted in \autoref{fig:running_example}.
 % Model alignment for FSM's <--> petri nets and FSM's/Petri nets <--> pi-calculus
 
 \begin{definition}[Finite state machines] \label{def:fsm}
@@ -506,6 +536,7 @@ I will now define finite state machines and petri nets, state their respective m
 In addition to \autoref{def:fsm}, we added names to states and state machines.
 The finite alphabet $\Sigma$ is not made explicit but can be derived by the transition names of a given state machine.
 The clouds in \autoref{fig:fsm_metamodel} depict concrete syntax elements inspired by \gls{uml} state charts.
+The concrete syntax elements for state machines and the one following for petri nets are used already in \autoref{fig:running_example}
 
 % can be put sideways if we need the space
 \begin{figure}[h]
@@ -523,7 +554,8 @@ The clouds in \autoref{fig:fsm_metamodel} depict concrete syntax elements inspir
 We will ignore this issue for now, since we do not want to introduce constraints to the metamodel.}.
 In addition to \autoref{def:pn}, places have a set of tokens since we want to model states of petri nets, which are token distributions.
 We again added names to transitions, places, edges and the petri net itself.
-A concrete syntax for the metamodel is also given.
+A concrete syntax for the metamodel is also given, where edge weights should be written above the arrow depicting the edge.
+The default weight is one if no weight is specifically stated.
 
 \begin{figure}[h]
     \centering
@@ -532,25 +564,25 @@ A concrete syntax for the metamodel is also given.
     \label{fig:petri_net_metamodel}
 \end{figure}
 
-\begin{definition}[$\pi$-calculus processes] \label{def:pi_processes}
-    Let $\mathcal{N}$ be a set of names and $\delta \in \{x(y),\overline{x}\langle y \rangle \mid x,y \in \mathcal{N})\}$ a prefix operator.
-    A process P is a term generated by the following syntax
-    \begin{align*}
-        P && \Coloneqq && M, && (vx) P, && P_1 \mid P_2\\
-        M && \Coloneqq && 0, && \delta.P, && M_1 + M_2
-    \end{align*}
-    $P$ defines the set \textit{Proc} of processes ($P, P_1, P_2 \in Proc$), while $M$ defines the set \textit{Sum} of summations ($M, M_1, M_2 \in M$) \cite{gadducciGraphRewritingPcalculus2007}.
-\end{definition}
+% \begin{definition}[$\pi$-calculus processes] \label{def:pi_processes}
+%     Let $\mathcal{N}$ be a set of names and $\delta \in \{x(y),\overline{x}\langle y \rangle \mid x,y \in \mathcal{N})\}$ a prefix operator.
+%     A process P is a term generated by the following syntax
+%     \begin{align*}
+%         P && \Coloneqq && M, && (vx) P, && P_1 \mid P_2\\
+%         M && \Coloneqq && 0, && \delta.P, && M_1 + M_2
+%     \end{align*}
+%     $P$ defines the set \textit{Proc} of processes ($P, P_1, P_2 \in Proc$), while $M$ defines the set \textit{Sum} of summations ($M, M_1, M_2 \in M$) \cite{gadducciGraphRewritingPcalculus2007}.
+% \end{definition}
 
-\autoref{fig:pi_metamodel} defines the metamodel for $\pi$-calculus processes.
-It reflects the recursive syntax from \autoref{def:pi_processes}.
+% \autoref{fig:pi_metamodel} defines the metamodel for $\pi$-calculus processes.
+% It reflects the recursive syntax from \autoref{def:pi_processes}.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=3.4in]{pi_metamodel}
-    \caption{$\pi$-calculus metamodel $M^3$}
-    \label{fig:pi_metamodel}
-\end{figure}
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=3.4in]{pi_metamodel}
+%     \caption{$\pi$-calculus metamodel $M^3$}
+%     \label{fig:pi_metamodel}
+% \end{figure}
 
 Aligning the metamodels for finite state machines and petri nets is straightforward since both formalisms rely on transitions to change the application state.
 Consequently, transitions are aligned, as shown in \autoref{fig:fsm_pn_alignment}.
@@ -570,15 +602,7 @@ A different formalization suitable for more complex model alignments is the comp
 % Transformation of FSM's, petri-nets and maybe the pi-calculus.
 I will choose graph grammars as a semantic domain for the reasons stated earlier, but one could also choose a different domain or switch in the future.
 Our approach is to transform each model into a graph grammar and combine the resulting grammars to realize the defined coordination between the models.
-I will explain the transformation to graph grammars for state machines, petri nets, and their coordination using a minimal example.
-\autoref{fig:fsm_pn_coordination} depicts a petri net $A^1$, a state machine $A^2$, and a synchronization for the transitions $t$ and $tr$ using the concrete syntax elements introduced earlier.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=3.4in]{fsm_pn_sample}
-    \caption{Sample models $A^1$, $A^2$, and their coordination}
-    \label{fig:fsm_pn_coordination}
-\end{figure}
 The semantic domain of graph grammars is defined as follows.
 \begin{definition}[Graph grammar] \label{def:graphGrammar}
 A graph grammar $GG=(S, P)$ consists of a start graph $S$ and a set of production rules $P$ \cite{ehrigGraphGrammarsPetri2004}. 
@@ -592,23 +616,24 @@ The transformation from petri nets to graph grammars is based on the semantics d
 I assume that the token distribution in a petri-net model $pn$ corresponds to its initial state.
 The start graph is then given by the graph, which only contains the places and tokens from $pn$.
 Each transition is transformed to a production rule which removes tokens from the incoming places of the transition and adds tokens to the outgoing places of the transition according to the defined weights.
-For the petri net $A^1$, the resulting graph grammar will have one rule, which removes two tokens from the place $p1$ and adds one token to the place $p2$.
+For the petri net $N^1$, the resulting graph grammar will have six rules, where each rule removes one token from the previous place and adds one token to the subsequent place.
 
 % Transformation state machine
 The initial state of a graph grammar representing a state machine is given by the graph only containing its start state.
 Again, each transition is transformed to a production rule which removes the source state of the transition and adds the target state of the transition.
 Consequently, during the execution of a state machine, the corresponding graph will always only contain the current state.
+I started to work on integrating the $\pi$-calculus in the semantics domain of graph grammars based on \cite{gadducciGraphRewritingPcalculus2007} but I will not discuss it here.
 
 % show combined start state for the sample and the combined rule
 Combining two graph grammars for state machines or petri nets is given by the union of start states and merging the production rules.
 All production rules without synchronization carry over unchanged.
 Every pair in \textit{SynchCom} leads to one rule where the three graphs of the rule are the component-wise union of the two underlying rules.
-For example, the synchronization in \autoref{fig:fsm_pn_coordination} leads to the rule shown in \autoref{fig:combined_rule}.
+For example, the synchronization in \autoref{fig:running_example} leads to the rule shown in \autoref{fig:combined_rule}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=3.4in]{combined_rule}
-    \caption{Resulting rule $(t,tr)$ for \autoref{fig:fsm_pn_coordination}}
+    \caption{Resulting rule (acquire, acquire r1) for \autoref{fig:running_example}}
     \label{fig:combined_rule}
 \end{figure}
 
