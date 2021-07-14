@@ -217,7 +217,7 @@
 
 % *** SUBFIGURE PACKAGES ***
 %\ifCLASSOPTIONcompsoc
-%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
 %\else
 %  \usepackage[caption=false,font=footnotesize]{subfig}
 %\fi
@@ -501,12 +501,12 @@ As a convention, Petri net edges have the weight one if not explicitly stated ot
 The state machines $SM^1$ and $SM^2$ represent two resources that can be acquired and released by the processes defined by $SM^3$ and $N_1$.
 $SM^3$ acquires both resources, does some work, and then releases them, while the three processes modeled in the Petri net $N^1$ only need one of the two resources to do their work.
 
-\begin{figure}[h]
+\begin{figure*}[h]
     \centering
-    \includegraphics[width=3.48in]{example}
+    \includegraphics[width=5in]{example}
     \caption{Example models $SM^1$, $SM^2$, $SM^3$, $N^1$, and their coordination}
     \label{fig:running_example}
-\end{figure}
+\end{figure*}
 
 The models depicted in \autoref{fig:running_example} describe four processes and two shared resources.
 The process details are kept abstract.
@@ -543,7 +543,7 @@ The concrete syntax elements for state machines and the one following for Petri 
 % can be put sideways if we need the space
 \begin{figure}[h]
     \centering
-    \includegraphics[width=2in]{state_machine_metamodel}
+    \includegraphics[width=2.3in]{state_machine_metamodel}
     \caption{Finite state machine metamodel $M^1$}
     \label{fig:fsm_metamodel}
 \end{figure}
@@ -573,7 +573,7 @@ One could also add an inter-model relation for asynchronous communication betwee
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=3.4in]{fsm_pn_alignment}
+    \includegraphics[width=3.48in]{fsm_pn_alignment}
     \caption{Alignment of the metamodels $M^1$ and $M^2$}
     \label{fig:fsm_pn_alignment}
 \end{figure}
@@ -645,15 +645,24 @@ In the near future, other popular behavioral models such as \gls{uml} activity d
 
 
 \section{Conclusion}
-% first two steps in the process already developed quite well.
-% Future work: Step 3 and 4 of the process
+We proposed a methodology for handling heterogeneous behavioral model consistency.
+To the best to our knowledge current approaches only offer limited consistency checking in a heterogeneous scenario.
+To cope with heterogeneity metamodel and model alignment is proposed which originated from the consistency management process for structural models.
+
+Furthermore, we have proposed graph grammars as a suitable semantic domain for behavioral consistency checking.
+The two behavioral formalisms state machines and Petri nets are encoded in the graph grammar domain and their synchronization was explained using a running example. 
+
+The current work develops a strong formal foundation for behavioral consistency checking but has to be expanded, implemented and tried in practice.
+The performance of the approach and its applicability to real world scenarios has to be investigated.
+Possible extensions for the given two formalisms would be asynchronous communication, synchronizing multiple Petri net transitions with one state machine transition or a synchronization of more than two transitions from different models.
+More behavioral models must be included in the future to allow for more heterogeneity.
+It will be interesting to see if timed behavioral models can be integrated using the current or a different semantic domain.
 
 % Possible limitations:
 % Discuss the drawbacks. Slow state space generation? Performance?
 % State space generation fast enough? --> Tricks using the underlying models to match rules.
 % How to describe colored Petri nets or other more complex models?
 % High level modelling. Not on the level of detail for which we would need colored Petri nets and more sophisticated kinds of automata (to express these details in a straight forward way).
-The conclusion goes here.
 
 \section*{Acknowledgment}
 The author would like to thank Harald König, Adrian Rutle, and Yngve Lamo for fruitful discussions.
