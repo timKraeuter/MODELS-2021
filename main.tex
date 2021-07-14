@@ -345,7 +345,7 @@ Behavioral models play an essential role in \gls{mdse}.
 Keeping inter-related behavioral models consistent is critical to use them successfully in \gls{mdse}. 
 However, consistency checking for behavioral models, especially in a heterogeneous scenario, is limited.
 
-I propose a methodology to integrate heterogeneous behavioral models to achieve consistency checking in broader scenarios.
+We propose a methodology to integrate heterogeneous behavioral models to achieve consistency checking in broader scenarios.
 It is based on aligning the respective behavioral metamodels by defining possible inter-model relations which carry behavioral meaning.
 Converting the models and their relations to a behavioral formalism enables analysis of global behavioral consistency using model-checking. 
 \end{abstract}
@@ -368,12 +368,12 @@ Without this inter-model consistency, \gls{mdse} cannot deliver on the promised 
 This is especially problematic when the used models are heterogeneous:
 Firstly, structural models such as class diagrams and entity-relationship diagrams exist.
 Secondly, behavioral diagrams are used to describe the dynamics of a system.
-Widely used diagrams or formalisms for specifying behavior are state machines, activity diagrams, petri nets, and process algebras.
+Widely used diagrams or formalisms for specifying behavior are state machines, activity diagrams, Petri nets, and process algebras.
 
 % We already deal with structural models/ consistency
 Inter-model consistency for structural models has been researched extensively.
 One promising approach is model weaving \cite{bezivinCanonicalSchemeModel2006}, which establishes links between models with the goal of automatic consistency checking.
-Typically, these inter-relations focus on structural aspects, such as identity, usage, dependency, refinement, etc. \cite{feldmannManagingIntermodelInconsistencies2019, torresSystematicLiteratureReview2020}.
+Typically, these inter-relations focus on structural aspects, such as identity, usage, dependency, and refinement \cite{feldmannManagingIntermodelInconsistencies2019, torresSystematicLiteratureReview2020}.
 They are called \textit{correspondences} on the metamodel level and \textit{commonalities} on the model level \cite{stunkelMultipleModelSynchronization2020, klareCommonalitiesPreservingConsistency2019}.
 Inter-model constraints can then be defined and automatically be checked on a global model obtained using commonalities to merge individual models \cite{stunkelMultimodelCorrespondenceIntermodel2018} or establish a comprehensive view of the overall model \cite{stunkelMultipleModelSynchronization2020}.
 
@@ -381,7 +381,7 @@ Inter-model constraints can then be defined and automatically be checked on a gl
 However, there is no general approach to check joint behavioral consistency on a collection of models, sometimes called semantic consistency.
 Behavioral models describing interacting parts of a system should be checked for deadlocks, live-locks, or other system-specific requirements.
 This is generally not problematic if the models conform to the same formalism or modeling language.
-But in a heterogeneous case, one still wants to define interactions between the models and check behavioral consistency.
+Nevertheless, in a heterogeneous case, one still wants to define interactions between the models and check behavioral consistency.
 
 Only using one formalism or modeling language for behavioral models is not feasible since one wants to use the most suitable formalism or modeling language in each situation.
 The modeling formalisms used in a given case depend on the system requirements, existing software landscape, and the knowledge and preferences of the responsible developers. 
@@ -389,32 +389,31 @@ The modeling formalisms used in a given case depend on the system requirements, 
 % We have to deal with consistency between structural and behavioral models in the future as well. Since structural models are graphs, graph transformations seem promising to integrate this in the future.
 There can also be consistency rules spanning structural and behavioral models.
 For example, messages to objects in a \gls{uml} sequence diagram must match the corresponding classes methods in a class diagram \cite{egyedFixingInconsistenciesUML2007}.
-I will focus on behavioral consistency before addressing consistency between structural and behavioral models in future work. 
+We will focus on behavioral consistency before addressing consistency between structural and behavioral models in future work. 
 
 \section{Related work}
 % Engels
-\cite{engelsMethodologySpecifyingAnalyzing2001} investigate the consistency of object-oriented behavioral models formulated as capsule state charts in \gls{uml}-RT.
-% They are restricted to UML behavioral models --> homo case
+\cite{engelsMethodologySpecifyingAnalyzing2001} investigate the consistency of object-oriented behavioral models formulated as capsule statecharts in \gls{uml}-RT.
 Consequently, they deal with a homogeneous modeling environment where all behavioral models are developed in the same modeling language.
 The authors use the term semantic consistency instead of behavioral consistency.
-To check behavioral consistency, they map state chart models to \gls{csp}.
+To check behavioral consistency, they map statechart models to \gls{csp}.
 Using the well-defined semantics of \gls{csp}, they validate deadlock freeness and the processes compliance to a previously defined communication protocol.
 Their proposed general methodology to analyze consistency is to find a suitable semantic domain and map the models into it.
 The semantic domain can then be exploited to check the consistency.
 
-Based on this methodology, consistency checking for sequence diagrams and state charts was developed in \cite{kusterExplicitBehavioralConsistency2003}.
-The consistency requirement claims that all possible interactions specified within sequence diagrams for each class should be possible regarding the behavior of that class defined in a state chart.
+Based on this methodology, consistency checking for sequence diagrams and statecharts was developed in \cite{kusterExplicitBehavioralConsistency2003}.
+The consistency requirement claims that all possible interactions specified within sequence diagrams for each class should be possible regarding the behavior of that class defined in a statechart.
 As a semantic domain, the authors have successfully used \gls{csp} again.
 
-Besides process algebras such as \gls{csp}, different types of petri nets are used for behavioral consistency checking.
-In \cite{yaoConsistencyCheckingUML2006}, petri nets were used to check consistency for sequence diagrams and state charts.
-\cite{cunhaFormalVerificationUML2011} analyses sequence diagrams in the context of embedded systems using a transformation to petri nets.
-Consistency for \gls{uml} activity diagrams was checked using petri nets in \cite{thierry-miegUMLBehavioralConsistency2008}.
+Besides process algebras such as \gls{csp}, different types of Petri nets are used for behavioral consistency checking.
+In \cite{yaoConsistencyCheckingUML2006}, Petri nets were used to check consistency for sequence diagrams and statecharts.
+\cite{cunhaFormalVerificationUML2011} analyses sequence diagrams in the context of embedded systems using a transformation to Petri nets.
+Consistency for \gls{uml} activity diagrams was checked using Petri nets in \cite{thierry-miegUMLBehavioralConsistency2008}.
 
 All the approaches use model checking to analyze behavioral consistency and follow the methodology defined in \cite{engelsMethodologySpecifyingAnalyzing2001} with variations in the semantic domain.
 However, the approaches cover only homogeneous scenarios where all models conform to one modeling language.
-An exception is consistency checking between sequence diagrams and state charts.
-In practice, one could encounter a situation where the combination of state machines, process algebras, petri nets, and activity diagrams is desired\footnote{The merger of two companies and their IT-infrastructure could for example cause strong heterogeneity in the used modeling languages.}.
+An exception is consistency checking between sequence diagrams and statecharts.
+In practice, one could encounter a situation where the combination of state machines, process algebras, Petri nets, and activity diagrams is desired\footnote{The merger of two companies and their IT-infrastructure could for example cause strong heterogeneity in the used modeling languages.}.
 It is possible to check behavioral consistency using our proposed approach even in heterogeneous modeling scenarios.
 This leads to more freedom of choice regarding behavioral modeling and model combinations.
 In addition, behavioral models of higher quality can be achieved, which lay the foundation for successful and effective \gls{mdse}.
@@ -438,19 +437,19 @@ Then, we can calculate the disjoint union of all atomic propositions and use thi
 
 % 2. Metamodel and model aligment
 To check inter-model consistency for structural models, one defines inter-relations between models on the metamodel level and the model level to describe overlaps in information \cite{stunkelMultipleModelSynchronization2020}.
-I propose a similar approach for behavioral models based on inter-model relations.
+We propose a similar approach for behavioral models based on inter-model relations.
 The inter-model relations should define how behavioral models coordinate, leading to the composite system's behavior consisting of all individual models.
 
 The second step is to define which inter-model relations are allowed.
-I will accomplish this by model-weaving on the metamodel level, i.e., by defining a metamodel for the inter-model relations.
+We will accomplish this by model-weaving on the metamodel level, i.e., by defining a metamodel for the inter-model relations.
 This is also called \textit{metamodel alignment} and is a key activity in the multi-model consistency management process \cite{stunkelMultipleModelSynchronization2020}.
 For this approach to work, there must be a metamodel for each used model.
 However, developing a metamodel if it is not already present is a one-time expense.
 Similarly, metamodel alignment must be only done once.
-In \autoref{sec:currentStatus}, we will align the metamodels for state machines and petri nets.
+In \autoref{sec:currentStatus}, we will align the metamodels for state machines and Petri nets.
 In the future, other formalisms can be integrated similarly.
 After aligning the metamodels, one can define inter-model relations between the behavioral models, i.e., align the models.
-For example, the synchronization of a transition in a state machine with a transition in a petri net could be specified.
+For example, the synchronization of a transition in a state machine with a transition in a Petri net could be specified.
 
 % 3. Transformation to a semantic domain (proposes graph grammars)
 The third step in the process is to transform the models into a suitable semantic domain respecting their inter-model relations.
@@ -458,7 +457,7 @@ By including the inter-model relations in the transformation, we can deal with a
 A feasible approach is to translate each model individually and then combine them according to the defined inter-model relations.
 
 We will use graph grammars as a behavioral formalism for the model execution (see \autoref{sec:currentStatus}) for the following reasons.
-Many behavioral formalisms have been described by graph grammars, for example, state machines \cite{kuskeFormalSemanticsUML2001, varroFormalSemanticsUML2002}, petri nets \cite{ehrigGraphGrammarsPetri2004}, the $\pi$-calculus \cite{gadducciGraphRewritingPcalculus2007}, and workflow models \cite{rutleMetamodellingApproachBehavioural2012}.
+Many behavioral formalisms have been described by graph grammars, for example, state machines \cite{kuskeFormalSemanticsUML2001, varroFormalSemanticsUML2002}, Petri nets \cite{ehrigGraphGrammarsPetri2004}, the $\pi$-calculus \cite{gadducciGraphRewritingPcalculus2007}, and workflow models \cite{rutleMetamodellingApproachBehavioural2012}.
 Using graph grammars, one stays on a higher level of abstraction than, for example, transitions systems as a semantic domain.
 This has the advantage that the state space generated by graph grammars is better understandable.
 Counterexamples for consistency constraints should also be easier to understand because we stay closer to the original modeling formalisms using graph grammars.
@@ -471,36 +470,36 @@ The fourth step in the process is concerned with verifying the specified behavio
 The semantic domain should generate a state space for the overall system connected to the original models to attach the atomic propositions from the individual models to the generated state space.
 Thus, one gets a Kripke structure to check behavioral constraints.
 Besides checking general properties such as deadlocks, the model-specific constraints defined in step one should be checked.
-I aim to reuse existing model checkers for evaluating them on the calculated Kripke structure.
+We aim to reuse existing model checkers for evaluating them on the calculated Kripke structure.
 
 In the best case, the specification of constraints is independent of the choice of the semantic domain, such that the behavioral constraints can be checked automatically.
-Generally, user input is also possible in this step if the chosen semantic domain does not exactly match the previously defined constraints.
+Generally, user input is also possible in this step if the chosen semantic domain does not precisely match the previously defined constraints.
 However, this is not desirable since the semantic domain should be mostly hidden from the user.
 
 \section{Plan for evaluation and validation}
-To evaluate our methodology, I plan to implement a tool for behavioral consistency checking.
+To evaluate our methodology, we plan to implement a tool for behavioral consistency checking.
 It should come with a textual \gls{dsl} for metamodel and model alignment, transformations to the semantic domain, and the semantic domain's implementation, including consistency verification.
 For graph grammars, one can use tools like GROOVE \cite{ghamarianModellingAnalysisUsing2012, rensinkGROOVESimulatorTool2004}, or Verigraph \cite{costaVerigraphSystemSpecification2016} to generate a state space from a graph grammar.
 Especially the performance of graph grammars as a semantic domain must be critically evaluated.
 If the prototype can handle artificial scenarios successfully, one can move on to industry case studies.
 
 \section{Expected contributions}
-I plan to make the following contributions:
+We plan to make the following contributions:
 \begin{itemize}
     \item A new methodology for behavioral consistency checking in heterogeneous cases.
     \item Metamodels and metamodel alignments for common behavioral modeling formalisms.
     \item A semantic domain for advanced behavioral consistency checking.
 \end{itemize}
-Besides these theoretical contributions, I plan to develop a modeling tool for metamodel and model alignment and behavioral consistency checking using the proposed methodology.
+Besides these theoretical contributions, we plan to develop a modeling tool for metamodel and model alignment and behavioral consistency checking using the proposed methodology.
 \section{Current status} \label{sec:currentStatus}
-My work on behavioral consistency has just started, such that only the first three activities in the consistency management process (see \autoref{fig:consistency_process}) have been investigated.
-So far, finite state machines and petri nets have been considered as behavioral models/formalisms.
+Our work on behavioral consistency has just started, such that only the first three activities in the consistency management process (see \autoref{fig:consistency_process}) have been investigated.
+So far, finite state machines and Petri nets have been considered as behavioral models/formalisms.
 
 We will use the example models depicted in \autoref{fig:running_example} to explain the current status of our work by following the proposed methodology.
-\autoref{fig:running_example} depicts three state machines, $SM^1$-$SM^3$, and a petri net $N^1$ (ignore the cyan connections for now).
-As a convention, petri net edges have the weight one if not explicitly stated otherwise.
+\autoref{fig:running_example} depicts three state machines, $SM^1$-$SM^3$, and a Petri net $N^1$ (ignore the cyan connections for now).
+As a convention, Petri net edges have the weight one if not explicitly stated otherwise.
 The state machines $SM^1$ and $SM^2$ represent two resources that can be acquired and released by the processes defined by $SM^3$ and $N_1$.
-$SM^3$ acquires both resources, does some work, and then releases them, while the three processes modeled in the petri net $N^1$ only need one of the two resources to do their work.
+$SM^3$ acquires both resources, does some work, and then releases them, while the three processes modeled in the Petri net $N^1$ only need one of the two resources to do their work.
 
 \begin{figure}[h]
     \centering
@@ -510,34 +509,36 @@ $SM^3$ acquires both resources, does some work, and then releases them, while th
 \end{figure}
 
 The models depicted in \autoref{fig:running_example} describe four processes and two shared resources.
-The process details are kept abstract, but we often face situations in which multiple processes are accessing the same resources.
+The process details are kept abstract.
+However, we often face situations in which multiple processes are accessing the same resources.
 A reasonable requirement for the overall system resulting from running the models would be that all processes always finish their execution.
 In addition, each resource is accessed by at most one process at a time.
 Thus, we formulate the following constraints:
 \begin{enumerate}
     \item \textbf{Successful termination:} The state where both resources are available while $SM^3$ is in its final state and $N^1$ has three tokens in the place \textit{end} should eventually be reached.
-    \item \textbf{Proper resource 1 access:} There can be at most one token in the places \textit{r1} while $SM^3$ is in the state start or end.
+    \item \textbf{Proper resource one access:} There can be at most one token in the places \textit{r1} while $SM^3$ is in the state start or end.
     If $SM^3$ is not in the start or end state, there must be no token in the places \textit{r1}.
-    \item \textbf{Proper resource 2 access:} There can be at most one token in the places \textit{r2} while $SM^3$ is not in the state work.
+    \item \textbf{Proper resource two access:} There can be at most one token in the places \textit{r2} while $SM^3$ is not in the state work.
     If $SM^3$ is in the state work, there must be no token in the places \textit{r2}.
 \end{enumerate}
 
 The constraints can be formalized using temporal logic by assigning appropriate atomic propositions to the mentioned states.
 The first constraint can be seen as a liveness property, while the second and third constraints describe safety properties.
 
-To check our constraints, we need to define finite state machines and petri nets, state their respective metamodels and align them.
+To check our constraints, we need to define finite state machines and Petri nets, state their respective metamodels and align them.
 After that, we can align the models of our running example depicted in \autoref{fig:running_example}.
-% Model alignment for FSM's <--> petri nets and FSM's/Petri nets <--> pi-calculus
+% Model alignment for FSM's <--> Petri nets and FSM's/Petri nets <--> pi-calculus
 
 \begin{definition}[Finite state machines] \label{def:fsm}
     A finite state machine $M=(S, \Sigma, \delta, s_0, F)$ consists of a set of states $S$, a finite alphabet $\Sigma$, a state transition relation $\delta \subseteq S \times \Sigma \times S$, an initial state $s_0 \in S$ and a set of final states $F \subseteq S$ \cite{kunzeBehaviouralModelsModelling2016}. % Def. 3.2
 \end{definition}
 
 \autoref{fig:fsm_metamodel} depicts the metamodel $M^1$ for finite state machines.
+In the remainder of this paper, we will use the term state machines to refer to finite state machines.
 In addition to \autoref{def:fsm}, we added names to states and state machines.
 The finite alphabet $\Sigma$ is not made explicit but can be derived by the transition names of a given state machine.
-The clouds in \autoref{fig:fsm_metamodel} depict concrete syntax elements inspired by \gls{uml} state charts.
-The concrete syntax elements for state machines and the one following for petri nets are used already in \autoref{fig:running_example}
+The clouds in \autoref{fig:fsm_metamodel} depict concrete syntax elements inspired by \gls{uml} statecharts.
+The concrete syntax elements for state machines and the one following for Petri nets are used already in \autoref{fig:running_example}
 
 % can be put sideways if we need the space
 \begin{figure}[h]
@@ -548,13 +549,13 @@ The concrete syntax elements for state machines and the one following for petri 
 \end{figure}
 
 \begin{definition}[Petri net] \label{def:pn}
-    A petri net $N=(P,T,F, \omega)$ consists of a finite set of places $P$, a non-empty finite set of transitions $T$ ($T \cap P = \emptyset $), a flow relation $F \subseteq (P \times T) \cup (T \times P)$, and a weighting function $\omega: F \to \mathbb{N}$ \cite{kunzeBehaviouralModelsModelling2016}. % Def. 4.1 + 4.4 for weights
+    A Petri net $N=(P,T,F, \omega)$ consists of a finite set of places $P$, a non-empty finite set of transitions $T$ ($T \cap P = \emptyset $), a flow relation $F \subseteq (P \times T) \cup (T \times P)$, and a weighting function $\omega: F \to \mathbb{N}$ \cite{kunzeBehaviouralModelsModelling2016}. % Def. 4.1 + 4.4 for weights
 \end{definition}
 
-\autoref{fig:petri_net_metamodel} illustrates the metamodel $M^2$ for petri nets\footnote{Formally edges representing elements of the flow relation can have transitions or places as source and target which does not conform to \autoref{def:pn}.
+\autoref{fig:petri_net_metamodel} illustrates the metamodel $M^2$ for Petri nets\footnote{Formally edges representing elements of the flow relation can have transitions or places as source and target which does not conform to \autoref{def:pn}.
 We will ignore this issue for now, since we do not want to introduce constraints to the metamodel.}.
-In addition to \autoref{def:pn}, places have a set of tokens since we want to model states of petri nets, which are token distributions.
-We again added names to transitions, places, edges, and the petri net itself.
+In addition to \autoref{def:pn}, places have a set of tokens since we want to model states of Petri nets, which are token distributions.
+We again added names to transitions, places, edges, and the Petri net itself.
 The concrete syntax for the metamodel is also given, where edge weights should be written above the arrow depicting the edge.
 The default weight is one if no weight is specifically stated.
 
@@ -565,7 +566,7 @@ The default weight is one if no weight is specifically stated.
     \label{fig:petri_net_metamodel}
 \end{figure}
 
-Aligning the metamodels for finite state machines and petri nets is straightforward since both formalisms rely on transitions to change the application state.
+Aligning the metamodels for finite state machines and Petri nets is straightforward since both formalisms rely on transitions to change the application state.
 Consequently, transitions are aligned, as shown in \autoref{fig:fsm_pn_alignment}.
 The inter-model relation relating the two is called synchronous communication and should be interpreted as two transitions firing simultaneously, i.e., handshaking in a semantic domain.
 One could also add an inter-model relation for asynchronous communication between transitions.
@@ -583,12 +584,12 @@ A different formalization suitable for more complex model alignments is the comp
 % Model alignment
 The cyan connections suggest the model alignment for our running example (\autoref{fig:running_example}).
 All \textit{acquire r1}/\textit{acquire r2} transitions are synchronized with the \textit{acquire} transition for the resource 1/2.
-Formally we obtain four sets of synchronisations since we have two models synchronizing with two resources.
-Aligning the state machine metamodel with itself (formally needed for the alignment of $SM^2$ and $SM^3$) is not explicitly shown but is analogous to the alignment shown in \autoref{fig:fsm_pn_alignment} for petri nets.
+Formally we obtain four sets of synchronizations since we have two models synchronizing with two resources.
+Aligning the state machine metamodel with itself (formally needed for the alignment of $SM^2$ and $SM^3$) is not explicitly shown but is analogous to the alignment shown in \autoref{fig:fsm_pn_alignment} for Petri nets.
 The model alignment states how the models coordinate with each other, which is key for the state space generation in the chosen semantic domain.
 
-% Transformation of FSM's, petri-nets and maybe the pi-calculus.
-I will choose graph grammars as a semantic domain for the reasons stated earlier, but one could also choose a different domain or switch in the future.
+% Transformation of FSM's, Petri-nets and maybe the pi-calculus.
+We will choose graph grammars as a semantic domain for the reasons stated earlier, but one could also choose a different domain or switch in the future.
 Our approach is to transform each model into a graph grammar and combine the resulting grammars to realize the defined coordination between the models.
 
 The semantic domain of graph grammars is defined as follows.
@@ -599,12 +600,12 @@ A graph grammar $GG=(S, P)$ consists of a start graph $S$ and a set of productio
 A production rule $P= L \overset{l}{\leftarrow} K \overset{r}{\to} R$ consists of graphs L, K, R, and injective graph morphisms $l: K \to L$ and $r: K \to R$ \cite{ehrigGraphGrammarsPetri2004}. 
 \end{definition}
 
-% Transformation petri net
-The transformation from petri nets to graph grammars is based on the semantics defined in \cite{ehrigGraphGrammarsPetri2004}.
-I assume that the token distribution in a petri-net model $pn$ corresponds to its initial state.
+% Transformation Petri net
+The transformation from Petri nets to graph grammars is based on the semantics defined in \cite{ehrigGraphGrammarsPetri2004}.
+We assume that the token distribution in a Petri-net model $pn$ corresponds to its initial state.
 Thus, the start graph is given by the graph, which only contains the places and tokens from $pn$.
 Each transition is transformed to a production rule which removes tokens from the incoming places of the transition and adds tokens to the outgoing places of the transition according to the defined weights.
-For the petri net $N^1$, the resulting graph grammar will have six rules, where each rule removes one token from the previous place and adds one token to the subsequent place.
+For the Petri net $N^1$, the resulting graph grammar will have six rules, where each rule removes one token from the previous place and adds one token to the following place.
 
 % Transformation state machine
 The initial state of a graph grammar representing a state machine is given by the graph only containing its start state.
@@ -612,13 +613,13 @@ Again, each transition is transformed to a production rule that removes the tran
 Consequently, during the execution of a state machine, the corresponding graph will always only contain the current state.
 
 % show combined start state for the sample and the combined rule
-Combining a set of graph grammars for state machines and petri nets is given by the union of start states and merging the production rules.
+Combining a set of graph grammars for state machines and Petri nets is given by the union of start states and merging the production rules.
 All production rules without synchronization carry over unchanged.
 Every pair in a \textit{SynchCom} set leads to one rule where the three graphs of the rule are the component-wise union of the two underlying rules.
 
 In our running example, the synchronization (cyan connection) between $SM^1$ and $N^1$ leads to the rule shown in \autoref{fig:combined_rule}.
-However, since we have four synchronisation sets we also get a joint rule where \textit{acquire} of $SM^1$ synchronizes with \textit{acquire r1} in $SM^3$.
-This means resource one either synchronizes with $N^1$ or $SM^3$ not both.
+However, since we have four synchronization sets, we also get a joint rule where \textit{acquire} of $SM^1$ synchronizes with \textit{acquire r1} in $SM^3$.
+This means resource one either synchronizes with $N^1$ or $SM^3$, not both.
 
 \begin{figure}[h]
     \centering
@@ -629,36 +630,33 @@ This means resource one either synchronizes with $N^1$ or $SM^3$ not both.
 
 The state space generated by the final graph grammar is essentially a combination of states of the individual state spaces.
 Consequently, we can carry over the atomic propositions from the individual models and even check local constraints for individual models in the global state space.
-More interestingly one can check global behavioral constraints defined earlier using the union of atomic propositions.
+More interestingly, one can check the global behavioral constraints defined earlier using the union of atomic propositions.
 
-For our running example we would generate the state space from the previously obtained graph grammar and attach the set of defined atomic propositions.
+For our running example, we would generate the state space from the previously obtained graph grammar and attach the set of defined atomic propositions.
 Afterwards, we can check the consistency constraints formulated in the first step of the consistency management process.
-Eventual counter examples to our constraints should be well understandable since the graph grammar directly operates on instances of the defined metamodels.
+Eventual counterexamples to our constraints should be understandable since the graph grammar directly operates on instances of the defined metamodels.
 
 % Timeline
-Since our work so far is only theoretical we cannot check the behavioral consistency for our example.
-We plan to finish the theoretical foundations in the next few month by defining executable algorithms for the transformation to the semantic domain of state machines and petri nets.
-Afterwards, during the last month of this year, we plan to implement a prototype to automate the transformation to the semantic domain including consistency verification.
+Since our work is only theoretical, we cannot check the behavioral consistency for our example yet.
+We plan to finish the theoretical foundations in the next few months by defining executable algorithms for the transformation to the semantic domain of state machines and Petri nets.
+Afterwards, during the last month of this year, we plan to implement a prototype to automate the transformation to the semantic domain, including consistency verification.
 In parallel, we integrate the $\pi$-calculus in the semantics domain of graph grammars inspired by \cite{gadducciGraphRewritingPcalculus2007}.
-In the near future other popular behavioral models such as \gls{uml} activity diagrams and \gls{bpmn} models should be integrated. 
+In the near future, other popular behavioral models such as \gls{uml} activity diagrams and \gls{bpmn} models should be integrated. 
 
 
 \section{Conclusion}
 % first two steps in the process already developed quite well.
 % Future work: Step 3 and 4 of the process
-% including more modeling languages and formalisms.
-% BPMN, activity diagrams other process calculi
-% Implementation of the tool.
 
 % Possible limitations:
 % Discuss the drawbacks. Slow state space generation? Performance?
 % State space generation fast enough? --> Tricks using the underlying models to match rules.
-% How to describe colored petri nets or other more complex models?
-% High level modelling. Not on the level of detail for which we would need colored petri nets and more sophisticated kinds of automata (to express these details in a straight forward way).
+% How to describe colored Petri nets or other more complex models?
+% High level modelling. Not on the level of detail for which we would need colored Petri nets and more sophisticated kinds of automata (to express these details in a straight forward way).
 The conclusion goes here.
 
 \section*{Acknowledgment}
-The authors would like to thank...
+The author would like to thank Harald König, Adrian Rutle, and Yngve Lamo for fruitful discussions.
 
 \bibliographystyle{IEEEtran}
 \bibliography{bib}
