@@ -362,10 +362,10 @@ In the multi-view modeling approach, a set of models is developed for the differ
 It is often the case that separate groups of people work independently on parts of the system.
 However, this separation of concerns causes problems because models must be kept consistent, i.e., they should not contain contradicting information \cite{cicchettiMultiviewApproachesSoftware2019}.
 % MDSE will fail if the underlying models are inconsistent!
-Without this inter-model consistency, \gls{mdse} cannot deliver on the promised increase of productivity and reduction of errors \cite{brambillaModeldrivenSoftwareEngineering2017}.
+Without this inter-model consistency, \gls{mdse} cannot deliver on the promised productivity increase and error reduction \cite{brambillaModeldrivenSoftwareEngineering2017}.
 
 % MDSE is heterogeneous and has to be kept consistent.
-This is especially problematic when the used models are heterogeneous:
+Inter-model consistency is especially problematic when the used models are heterogeneous:
 Firstly, structural models such as class diagrams and entity-relationship diagrams exist.
 Secondly, behavioral diagrams are used to describe the dynamics of a system.
 Widely used diagrams or formalisms for specifying behavior are state machines, activity diagrams, Petri nets, and process algebras.
@@ -375,7 +375,8 @@ Inter-model consistency for structural models has been researched extensively.
 One promising approach is model weaving \cite{bezivinCanonicalSchemeModel2006}, which establishes links between models with the goal of automatic consistency checking.
 Typically, these inter-relations focus on structural aspects, such as identity, usage, dependency, and refinement \cite{feldmannManagingIntermodelInconsistencies2019, torresSystematicLiteratureReview2020}.
 They are called \textit{correspondences} on the metamodel level and \textit{commonalities} on the model level \cite{stunkelMultipleModelSynchronization2020, klareCommonalitiesPreservingConsistency2019}.
-Inter-model constraints can then be defined and automatically be checked on a global model obtained using commonalities to merge individual models \cite{stunkelMultimodelCorrespondenceIntermodel2018} or establish a comprehensive view of the overall model \cite{stunkelMultipleModelSynchronization2020}.
+Inter-model constraints can then be defined and automatically be checked.
+This works by either merging individual models to a global model using commonalities \cite{stunkelMultimodelCorrespondenceIntermodel2018} or establishing a comprehensive view of the global model \cite{stunkelMultipleModelSynchronization2020}.
 
 % We have to deal with behavioral/semantic consistency between behavioral models especially of heterogeneous nature
 However, there is no general approach to check joint behavioral consistency on a collection of models, sometimes called semantic consistency.
@@ -393,7 +394,7 @@ We will focus on behavioral consistency before addressing consistency between st
 
 \section{Related work}
 % Engels
-\cite{engelsMethodologySpecifyingAnalyzing2001} investigate the consistency of object-oriented behavioral models formulated as capsule statecharts in \gls{uml}-RT.
+\cite{engelsMethodologySpecifyingAnalyzing2001} investigates the consistency of object-oriented behavioral models formulated as capsule statecharts in \gls{uml}-RT.
 Consequently, they deal with a homogeneous modeling environment where all behavioral models are developed in the same modeling language.
 The authors use the term semantic consistency instead of behavioral consistency.
 To check behavioral consistency, they map statechart models to \gls{csp}.
@@ -413,7 +414,7 @@ Consistency for \gls{uml} activity diagrams was checked using Petri nets in \cit
 All the approaches use model checking to analyze behavioral consistency and follow the methodology defined in \cite{engelsMethodologySpecifyingAnalyzing2001} with variations in the semantic domain.
 However, the approaches cover only homogeneous scenarios where all models conform to one modeling language.
 An exception is consistency checking between sequence diagrams and statecharts.
-In practice, one could encounter a situation where the combination of state machines, process algebras, Petri nets, and activity diagrams is desired\footnote{The merger of two companies and their IT-infrastructure could for example cause strong heterogeneity in the used modeling languages.}.
+In practice, one could encounter a situation where the combination of state machines, process algebras, Petri nets, and activity diagrams is desired\footnote{The merger of two companies and their IT-infrastructure could for example cause heterogeneity in the used modeling languages.}.
 It is possible to check behavioral consistency using our proposed approach even in heterogeneous modeling scenarios.
 This leads to more freedom of choice regarding behavioral modeling and model combinations.
 In addition, behavioral models of higher quality can be achieved, which lay the foundation for successful and effective \gls{mdse}.
@@ -433,28 +434,31 @@ A potential consistency problem for a set of behavioral models triggers the cons
 The potential problem should be first discussed and stated informally.
 
 To formalize it as a constraint, one should add atomic propositions to the states of the individual models with the problem in mind.
-Then, we can calculate the disjoint union of all atomic propositions and use this set of propositions to formalize our constraint in a temporal logic as if we had one model describing the joint system described by all models.
+Then, we can calculate the disjoint union of all atomic propositions and use this set of propositions to formalize our constraint in a temporal logic as if we had one model describing the joint system.
 
 % 2. Metamodel and model aligment
 To check inter-model consistency for structural models, one defines inter-relations between models on the metamodel level and the model level to describe overlaps in information \cite{stunkelMultipleModelSynchronization2020}.
 We propose a similar approach for behavioral models based on inter-model relations.
-The inter-model relations should define how behavioral models coordinate, leading to the composite system's behavior consisting of all individual models.
+The inter-model relations on the metamodel level define how behavioral models can coordinate.
+Thus, we call them \textit{coordinations}.
+The inter-model relations on the model level should state how models interact which leads to the composite system's behavior.
+Consequently, we call them \textit{interactions}
 
 The second step is to define which inter-model relations are allowed.
 We will accomplish this by model-weaving on the metamodel level, i.e., by defining a metamodel for the inter-model relations.
-This is also called \textit{metamodel alignment} and is a key activity in the multi-model consistency management process \cite{stunkelMultipleModelSynchronization2020}.
+This is also called \textit{metamodel alignment} and is an important activity in the multi-model consistency management process \cite{stunkelMultipleModelSynchronization2020}.
 For this approach to work, there must be a metamodel for each used model.
 However, developing a metamodel if it is not already present is a one-time expense.
 Similarly, metamodel alignment must be only done once.
-In \autoref{sec:currentStatus}, we will align the metamodels for state machines and Petri nets.
+In \autoref{sec:currentStatus}, we will align the metamodels for finite state machines and Petri nets.
 In the future, other formalisms can be integrated similarly.
-After aligning the metamodels, one can define inter-model relations between the behavioral models, i.e., align the models.
+After aligning the metamodels, one must align the models by defining interactions between them.
 For example, the synchronization of a transition in a state machine with a transition in a Petri net could be specified.
 
 % 3. Transformation to a semantic domain (proposes graph grammars)
-The third step in the process is to transform the models into a suitable semantic domain respecting their inter-model relations.
+The third step in the process is to transform the models into a suitable semantic domain respecting their interactions.
 By including the inter-model relations in the transformation, we can deal with a heterogeneous modeling scenario compared to the original methodology in \cite{engelsMethodologySpecifyingAnalyzing2001}.
-A feasible approach is to translate each model individually and then combine them according to the defined inter-model relations.
+A feasible approach is to translate each model individually and then combine them according to the defined interactions.
 
 We will use graph grammars as a behavioral formalism for the model execution (see \autoref{sec:currentStatus}) for the following reasons.
 Many behavioral formalisms have been described by graph grammars, for example, state machines \cite{kuskeFormalSemanticsUML2001, varroFormalSemanticsUML2002}, Petri nets \cite{ehrigGraphGrammarsPetri2004}, the $\pi$-calculus \cite{gadducciGraphRewritingPcalculus2007}, and workflow models \cite{rutleMetamodellingApproachBehavioural2012}.
@@ -462,15 +466,14 @@ Using graph grammars, one stays on a higher level of abstraction than, for examp
 This has the advantage that the state space generated by graph grammars is better understandable.
 Counterexamples for consistency constraints should also be easier to understand because we stay closer to the original modeling formalisms using graph grammars.
 In addition, structural models are formalized as graphs or graph-like structures \cite{stunkelMultipleModelSynchronization2020}, which can lead to an integration of behavioral and structural models using graph transformations in the future. 
-
-However, the semantic domain is interchangeable if there is an interpretation for the given models and their inter-relations.
+However, the semantic domain is interchangeable if there is an interpretation for the given models and their interactions.
 
 % 4. Consistency Verification
 The fourth step in the process is concerned with verifying the specified behavioral consistency.
 The semantic domain should generate a state space for the overall system connected to the original models to attach the atomic propositions from the individual models to the generated state space.
-Thus, one gets a Kripke structure to check behavioral constraints.
+Thus, one gets a Kripke structure (state space together with atomic propositions \cite{clarkeHandbookModelChecking2018}) to check behavioral constraints.
 Besides checking general properties such as deadlocks, the model-specific constraints defined in step one should be checked.
-We aim to reuse existing model checkers for evaluating them on the calculated Kripke structure.
+We aim to reuse existing model checkers to evaluate the defined constraints on the resulting Kripke structure.
 
 In the best case, the specification of constraints is independent of the choice of the semantic domain, such that the behavioral constraints can be checked automatically.
 Generally, user input is also possible in this step if the chosen semantic domain does not precisely match the previously defined constraints.
