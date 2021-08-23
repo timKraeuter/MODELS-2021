@@ -306,6 +306,7 @@
 % (Unless specifically asked to do so by the journal or conference you plan
 % to submit to, of course. )
 
+\usepackage{flushend} % Balances columns on the last page.
 \usepackage{hyperref} % for autoref
 \usepackage{amsthm} % for proofs
 \usepackage{amsmath} % theorems, definitions, etc.
@@ -316,7 +317,7 @@
 
 \usepackage{glossaries}
 
-\newacronym{mdse}{MDSE}{Model-driven software engineering}
+\newacronym{mde}{MDE}{Model-driven engineering}
 \newacronym{bpmn}{BPMN}{Business Process Modeling Notation}
 \newacronym{ct}{CT}{category theory}
 \newacronym{uml}{UML}{Unified Modeling Language}
@@ -341,8 +342,8 @@ Email: tkra@hvl.no}}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-Behavioral models play an essential role in \gls{mdse}.
-Keeping inter-related behavioral models consistent is critical to use them successfully in \gls{mdse}. 
+Behavioral models play an essential role in \gls{mde}.
+Keeping inter-related behavioral models consistent is critical to use them successfully in \gls{mde}. 
 However, consistency checking for behavioral models, especially in a heterogeneous scenario, is limited.
 
 We propose a methodology to integrate heterogeneous behavioral models to achieve consistency checking in broader scenarios.
@@ -357,14 +358,14 @@ Converting the models and their relations to a behavioral formalism enables anal
 
 
 \section{Problem}
-A significant motivation for \gls{mdse} is to handle the increasing complexity of software systems by a clear separation of concerns \cite{franceModeldrivenDevelopmentComplex2007}.
+A significant motivation for \glsfirst{mde} is to handle the increasing complexity of software systems by a clear separation of concerns \cite{franceModeldrivenDevelopmentComplex2007}.
 In the multi-view modeling approach, a set of models is developed for the different aspects of a system.
 Consequently, it is likely that separate groups of people work independently on different parts of the system.
 However, this separation of concerns causes problems because models must be kept consistent, i.e., they should not contain contradicting information \cite{cicchettiMultiviewApproachesSoftware2019}.
-% MDSE will fail if the underlying models are inconsistent!
-Without this inter-model consistency, \gls{mdse} cannot deliver on the promised productivity increase and error reduction \cite{brambillaModeldrivenSoftwareEngineering2017}.
+% mde will fail if the underlying models are inconsistent!
+Without this inter-model consistency, \gls{mde} cannot deliver on the promised productivity increase and error reduction \cite{brambillaModeldrivenSoftwareEngineering2017}.
 
-% MDSE is heterogeneous and has to be kept consistent.
+% mde is heterogeneous and has to be kept consistent.
 Inter-model consistency is especially problematic when the used models are heterogeneous:
 Firstly, structural models such as class diagrams and entity-relationship diagrams exist.
 Secondly, behavioral diagrams are used to describe the dynamics of a system.
@@ -380,11 +381,12 @@ This works by either merging individual models to a global model using commonali
 
 % We have to deal with behavioral/semantic consistency between behavioral models especially of heterogeneous nature
 However, there is no general approach to check global behavioral consistency on a collection of models, sometimes called semantic consistency.
+% Definition attempt (does not cover dead- and livelocks only simple reaches not reaches.): We define behavioral consistency as the absence of behavioral inconsistency, while behavioral inconsistency means that a collection of behavioral models can reach a combined state with contradicting information or cannot reach a set of desired combined states.
 Behavioral models describing interacting parts of a system should be checked for deadlocks, live-locks, and other system-specific requirements.
 This is generally not problematic if the models conform to the same formalism or modeling language.
 Nevertheless, in a heterogeneous case, one still wants to define interactions between the models and check behavioral consistency.
 
-Only using one formalism or modeling language for behavioral models is not feasible since one wants to use the most suitable formalism or modeling language in each situation.
+Using only one formalism or modeling language for behavioral models is not feasible since one wants to use the most suitable formalism or modeling language in each situation.
 The modeling formalisms used in each case depend on the system requirements, existing software landscape, and the knowledge and preferences of the responsible developers. 
 
 % We have to deal with consistency between structural and behavioral models in the future as well. Since structural models are graphs, graph transformations seem promising to integrate this in the future.
@@ -417,7 +419,7 @@ An exception is the consistency checking between sequence diagrams and statechar
 In practice, one could encounter a situation where the combination of state machines, process algebras, Petri nets, and activity diagrams is desired\footnote{The merger of two companies and their IT-infrastructures could for example cause heterogeneity in the used modeling languages.}.
 It is possible to check behavioral consistency using our proposed approach even in heterogeneous modeling scenarios.
 This leads to more freedom of choice regarding behavioral modeling and model combinations.
-In addition, behavioral models of higher quality can be achieved, which lay the foundation for successful and effective \gls{mdse}.
+In addition, behavioral models of higher quality can be achieved, which lay the foundation for successful and effective \gls{mde}.
 
 \section{Proposed solution}
 The proposed solution builds on the methodology presented in \cite{engelsMethodologySpecifyingAnalyzing2001} but introduces a new step inspired by the multi-model consistency management process for structural models defined in \cite{stunkelMultipleModelSynchronization2020}.
@@ -432,9 +434,9 @@ We will explain it in detail now.
 \end{figure}
 % 1. Consistency specification
 A potential consistency problem for a set of behavioral models triggers the consistency management process.
-The potential problem should be first discussed and stated informally.
-
-To formalize it as a constraint, one should add atomic propositions to the states of the individual models with the problem in mind.
+The first step of the process begins with a problem discussion and an informal problem statement.
+The step concludes by formalizing the consistency problem.
+To formalize the problem one should add atomic propositions to the states of the individual models with the problem statement in mind.
 Then, we can calculate the disjoint union of all atomic propositions and use this set of propositions to formalize our constraint in a temporal logic as if we had one model describing the global system.
 
 % 2. Metamodel and model aligment
