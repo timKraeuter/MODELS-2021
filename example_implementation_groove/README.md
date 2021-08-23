@@ -35,3 +35,5 @@ Constraint 3 is analog to constraint2.
 - Groove Demo: [Basic functionality](https://www.youtube.com/watch?v=R2beaSQ9-NM&t=626s).
 - Groove Demo: [Editing Graphs and Rules](https://www.youtube.com/watch?v=R2beaSQ9-NM).
 - Groove Demo: [Type Graphs](https://www.youtube.com/watch?v=LTGRS3AYSSM&t=22s).
+
+Feel free to contact me for further information.
