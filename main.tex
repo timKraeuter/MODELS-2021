@@ -501,7 +501,7 @@ We plan to make the following contributions:
 Besides these theoretical contributions, we plan to develop a modeling tool for metamodel and model alignment and behavioral consistency checking following the proposed methodology.
 
 \section{Current status} \label{sec:currentStatus}
-Our work on behavioral consistency has just started, such that we do not have an implementation of the following theoretical aspects yet.
+Our work on behavioral consistency has just started, such that we do not have a finished implementation of the following theoretical aspects yet.
 So far, finite state machines and Petri nets have been considered as behavioral models/formalisms.
 
 We will use the example models depicted in \autoref{fig:running_example} to explain the current status of our work by following the proposed methodology.
@@ -541,7 +541,7 @@ To check our constraints, we need to define finite state machines and Petri nets
 After that, we can align the models of our running example depicted in \autoref{fig:running_example}.
 % Model alignment for FSM's <--> Petri nets and FSM's/Petri nets <--> pi-calculus
 
-\begin{definition}[Finite state machines] \label{def:fsm}
+\begin{definition}[Finite state machine] \label{def:fsm}
     A finite state machine $M=(S, \Sigma, \delta, s_0, F)$ consists of a set of states $S$, a finite alphabet $\Sigma$, a state transition relation $\delta \subseteq S \times \Sigma \times S$, an initial state $s_0 \in S$ and a set of final states $F \subseteq S$ \cite{kunzeBehaviouralModelsModelling2016}. % Def. 3.2
 \end{definition}
 
@@ -666,11 +666,7 @@ To cope with heterogeneity, metamodel and model alignment are proposed inspired 
 
 Furthermore, we have proposed graph grammars as a suitable semantic domain for behavioral consistency checking.
 Finite state machines and Petri nets, as two fundamental behavioral formalisms, have been encoded in the graph grammar domain.
-Their metamodels have been aligned, and the intended synchronization semantics were highlighted using a running example. 
-
-% Delete this and add stuff about design science / evaluation to the evaluation part
-The current work develops a solid formal foundation for behavioral consistency checking but has to be expanded, implemented, and tried in practice.
-The performance of the approach and its applicability to real-world scenarios must be investigated.
+Their metamodels have been aligned, and the intended synchronization semantics were highlighted using a running example.
 
 Possible future work is adding asynchronous communication, synchronizing multiple Petri net transitions with one state machine transition, or synchronizing more than two transitions from different models with each other.
 In addition, more behavioral models must be included in the future to allow for more heterogeneity.
