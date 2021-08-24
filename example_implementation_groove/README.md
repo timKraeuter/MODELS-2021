@@ -27,7 +27,7 @@ G(F(end))
 
 !G(r1_accessed_twice_by_1P_2P_r1 | r1_accessed_twice_by_1P_2P_work | r1_accessed_twice_by_2x1P)
 
-Constraint 3 is analog to constraint2.
+Constraint 3 is analog to constraint 2.
 
 **All constraints are fulfilled by the state space,i.e., the models.**
 
