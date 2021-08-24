@@ -19,14 +19,14 @@ The atomic propositions are created in Groove using graph conditions. The constr
 Right-click on the generated state space and choose ```Verify < Check LTL property (full state space)``` and then copy-paste the constraints listed below to check them.
 
 ### Constraint 1 - LTL property:
-
+```
 G(F(end))
-
+```
 
 ### Constraint 2 - LTL property:
-
+```
 !G(r1_accessed_twice_by_1P_2P_r1 | r1_accessed_twice_by_1P_2P_work | r1_accessed_twice_by_2x1P)
-
+```
 Constraint 3 is analog to constraint 2.
 
 **All constraints are fulfilled by the state space,i.e., the models.**
