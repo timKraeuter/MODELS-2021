@@ -394,7 +394,7 @@ There can also be consistency rules spanning structural and behavioral models.
 For example, messages to objects in a \gls{uml} sequence diagram must match the corresponding classes methods in a class diagram \cite{egyedFixingInconsistenciesUML2007}.
 We will focus on behavioral consistency before addressing consistency between structural and behavioral models in future work. 
 
-\section{Related work}
+\section{Related work} \label{sec:related_work}
 % Engels
 \cite{engelsMethodologySpecifyingAnalyzing2001} investigates the consistency of object-oriented behavioral models formulated as capsule statecharts in \gls{uml}-RT.
 Consequently, they deal with a homogeneous modeling environment where all behavioral models are developed in the same modeling language.
@@ -413,13 +413,13 @@ In \cite{yaoConsistencyCheckingUML2006}, Petri nets were used to check consisten
 \cite{cunhaFormalVerificationUML2011} analyses sequence diagrams in the context of embedded systems using a transformation to Petri nets.
 Consistency for \gls{uml} activity diagrams was checked using Petri nets in \cite{thierry-miegUMLBehavioralConsistency2008}.
 
-All the approaches use model checking to analyze behavioral consistency and follow the methodology defined in \cite{engelsMethodologySpecifyingAnalyzing2001} with variations in the semantic domain.
-However, the approaches cover only homogeneous scenarios where all models conform to one modeling language.
-An exception is the consistency checking between sequence diagrams and statecharts.
 In practice, one could encounter a situation where the combination of state machines, process algebras, Petri nets, and activity diagrams is desired\footnote{The merger of two companies and their IT-infrastructures could for example cause heterogeneity in the used modeling languages.}.
 It is possible to check behavioral consistency using our proposed approach even in heterogeneous modeling scenarios.
 This leads to more freedom of choice regarding behavioral modeling and model combinations.
 In addition, behavioral models of higher quality can be achieved, which lay the foundation for successful and effective \gls{mde}.
+
+Approaches that cover heterogeneous scenarios and allow for model simulation, which can be used for behavioral consistency verification, are Ptolemy \cite{ekerTamingHeterogeneityPtolemy2003} and GEMOC studio \cite{deantoniModelingBehavioralSemantics2016}.
+However, they lack formal semantics, or in the case of Ptolemy, formal semantics have been developed afterwards\cite{tripakisModularFormalSemantics2013}.
 
 \section{Proposed solution}
 The proposed solution builds on the methodology presented in \cite{engelsMethodologySpecifyingAnalyzing2001} but introduces a new step inspired by the multi-model consistency management process for structural models defined in \cite{stunkelMultipleModelSynchronization2020}.
@@ -488,8 +488,12 @@ However, this is not desirable since the semantic domain should be mostly hidden
 To evaluate our methodology, we plan to implement a tool for behavioral consistency checking.
 It should come with a textual \gls{dsl} for metamodel and model alignment, automatic transformations to a semantic domain, and the semantic domain's implementation, including consistency verification.
 For graph grammars, one can use tools like GROOVE \cite{ghamarianModellingAnalysisUsing2012, rensinkGROOVESimulatorTool2004}, or Verigraph \cite{costaVerigraphSystemSpecification2016} to generate a state space from a graph grammar.
-Especially the performance of graph grammars as a semantic domain must be critically evaluated.
-If the prototype can handle artificial scenarios successfully, one can move on to industry case studies.
+
+The developed tool serves as a basis for evaluation and validation.
+At first, we plan to validate if the tool sufficiently covers frequent combinations of behavioral models found in the literature and industry.
+Afterward, we will evaluate the tool based on its performance and scalability by either increasing the number of behavioral models and their size or the computing resources available.
+Finally, we will compare our approach to the approaches taken by GEMOC studio \cite{deantoniModelingBehavioralSemantics2016} and Ptolemy \cite{ekerTamingHeterogeneityPtolemy2003}.
+The comparison will be based on the evaluation criteria mentioned before and the supported behavioral model heterogeneity.
 
 \section{Expected contributions}
 We plan to make the following contributions:
