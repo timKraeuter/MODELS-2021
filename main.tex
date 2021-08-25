@@ -539,7 +539,7 @@ Thus, we formulate the following constraints:
 \end{enumerate}
 
 The constraints can be formalized using temporal logic by assigning appropriate atomic propositions to the mentioned states.
-The first constraint can be seen as a liveness property, while the second and third constraints describe safety properties.
+The first constraint can be seen as a liveness property, while the last two constraints describe safety properties.
 
 To check our constraints, we need to define finite state machines and Petri nets, state their respective metamodels, and align them.
 After that, we can align the models of our running example depicted in \autoref{fig:running_example}.
@@ -607,8 +607,8 @@ The model alignment states how the models interact with each other, which is cru
 % Transformation of FSM's, Petri-nets and maybe the pi-calculus.
 We will choose graph grammars as a semantic domain for the reasons stated earlier, but one could also choose a different domain or switch in the future.
 Our approach is to transform each model into a graph grammar and combine the resulting grammars to realize the defined coordination between the models.
-
 The semantic domain of graph grammars is defined as follows.
+
 \begin{definition}[Graph grammar] \label{def:graphGrammar}
 A graph grammar $GG=(S, P)$ consists of a start graph $S$ and a set of production rules $P$ \cite{ehrigGraphGrammarsPetri2004}. 
 \end{definition}
@@ -642,7 +642,7 @@ This means resource one either synchronizes with $N^1$ or $SM^3$, but never both
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=3.4in]{combined_rule}
+    \includegraphics[width=2.6in]{combined_rule}
     \caption{Resulting rule (acquire, acquire r1) for \autoref{fig:running_example}}
     \label{fig:combined_rule}
 \end{figure}
@@ -673,7 +673,7 @@ Finite state machines and Petri nets, as two fundamental behavioral formalisms, 
 Their metamodels have been aligned, and the intended synchronization semantics were highlighted using a running example.
 
 Possible future work is adding asynchronous communication, synchronizing multiple Petri net transitions with one state machine transition, or synchronizing more than two transitions from different models with each other.
-In addition, more behavioral models must be included in the future to allow for more heterogeneity.
+In addition, more behavioral modeling formalisms must be included to allow for more heterogeneity.
 One could also aim to include continuous-time models for more diverse modeling scenarios.
 
 \section*{Acknowledgment}
