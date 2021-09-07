@@ -20,8 +20,9 @@ Right-click on the generated state space and choose ```Verify < Check LTL proper
 
 ### Constraint 1 - LTL property:
 ```
-G(F(end))
+F(G(end))
 ```
+The end state should eventually permanently hold (Liveness property).
 
 ### Constraint 2 - LTL property:
 ```
