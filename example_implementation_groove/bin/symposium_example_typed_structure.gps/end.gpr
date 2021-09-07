@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gxl xmlns="http://www.gupro.de/GXL/gxl-1.0.dtd">
+    <graph role="rule" edgeids="false" edgemode="directed" id="end">
+        <attr name="$version">
+            <string>curly</string>
+        </attr>
+        <node id="n6">
+            <attr name="layout">
+                <string>774 390 32 18</string>
+            </attr>
+        </node>
+        <node id="n7">
+            <attr name="layout">
+                <string>925 382 32 18</string>
+            </attr>
+        </node>
+        <node id="n8">
+            <attr name="layout">
+                <string>938 646 38 18</string>
+            </attr>
+        </node>
+        <node id="n9">
+            <attr name="layout">
+                <string>1069 598 38 18</string>
+            </attr>
+        </node>
+        <node id="n10">
+            <attr name="layout">
+                <string>1237 645 38 18</string>
+            </attr>
+        </node>
+        <node id="n13">
+            <attr name="layout">
+                <string>47 223 31 18</string>
+            </attr>
+        </node>
+        <node id="n22">
+            <attr name="layout">
+                <string>707 223 31 18</string>
+            </attr>
+        </node>
+        <node id="n26">
+            <attr name="layout">
+                <string>328 57 31 18</string>
+            </attr>
+        </node>
+        <node id="n14">
+            <attr name="layout">
+                <string>246 503 32 18</string>
+            </attr>
+        </node>
+        <node id="n29">
+            <attr name="layout">
+                <string>450 582 32 18</string>
+            </attr>
+        </node>
+        <node id="n25">
+            <attr name="layout">
+                <string>71 368 61 18</string>
+            </attr>
+        </node>
+        <node id="n15">
+            <attr name="layout">
+                <string>681 172 61 18</string>
+            </attr>
+        </node>
+        <node id="n35">
+            <attr name="layout">
+                <string>520 40 51 18</string>
+            </attr>
+        </node>
+        <node id="n16">
+            <attr name="layout">
+                <string>250 554 36 18</string>
+            </attr>
+        </node>
+        <node id="n31">
+            <attr name="layout">
+                <string>457 524 78 18</string>
+            </attr>
+        </node>
+        <node id="n17">
+            <attr name="layout">
+                <string>418 656 78 18</string>
+            </attr>
+        </node>
+        <node id="n18">
+            <attr name="layout">
+                <string>610 499 84 18</string>
+            </attr>
+        </node>
+        <node id="n30">
+            <attr name="layout">
+                <string>609 439 32 18</string>
+            </attr>
+        </node>
+        <node id="n21">
+            <attr name="layout">
+                <string>664 561 32 18</string>
+            </attr>
+        </node>
+        <node id="n33">
+            <attr name="layout">
+                <string>619 636 84 18</string>
+            </attr>
+        </node>
+        <node id="n32">
+            <attr name="layout">
+                <string>226 219 55 18</string>
+            </attr>
+        </node>
+        <node id="n19">
+            <attr name="layout">
+                <string>268 352 126 18</string>
+            </attr>
+        </node>
+        <node id="n34">
+            <attr name="layout">
+                <string>334 232 22 18</string>
+            </attr>
+        </node>
+        <node id="n12">
+            <attr name="layout">
+                <string>501 220 55 18</string>
+            </attr>
+        </node>
+        <node id="n37">
+            <attr name="layout">
+                <string>401 233 22 18</string>
+            </attr>
+        </node>
+        <node id="n20">
+            <attr name="layout">
+                <string>261 123 127 18</string>
+            </attr>
+        </node>
+        <node id="n27">
+            <attr name="layout">
+                <string>446 477 32 18</string>
+            </attr>
+        </node>
+        <edge from="n6" to="n6">
+            <attr name="label">
+                <string>type:Place</string>
+            </attr>
+        </edge>
+        <edge from="n6" to="n10">
+            <attr name="label">
+                <string>token</string>
+            </attr>
+        </edge>
+        <edge from="n6" to="n8">
+            <attr name="label">
+                <string>token</string>
+            </attr>
+            <attr name="layout">
+                <string>522 1 864 498 735 338 11</string>
+            </attr>
+        </edge>
+        <edge from="n6" to="n9">
+            <attr name="label">
+                <string>token</string>
+            </attr>
+            <attr name="layout">
+                <string>338 23 864 498 866 290 11</string>
+            </attr>
+        </edge>
+        <edge from="n6" to="n7">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n7" to="n7">
+            <attr name="label">
+                <string>string:"end"</string>
+            </attr>
+        </edge>
+        <edge from="n8" to="n8">
+            <attr name="label">
+                <string>type:Token</string>
+            </attr>
+        </edge>
+        <edge from="n8" to="n10">
+            <attr name="label">
+                <string>!=</string>
+            </attr>
+            <attr name="layout">
+                <string>488 -20 735 338 1034 337 11</string>
+            </attr>
+        </edge>
+        <edge from="n8" to="n9">
+            <attr name="label">
+                <string>!=</string>
+            </attr>
+        </edge>
+        <edge from="n9" to="n9">
+            <attr name="label">
+                <string>type:Token</string>
+            </attr>
+        </edge>
+        <edge from="n9" to="n10">
+            <attr name="label">
+                <string>!=</string>
+            </attr>
+        </edge>
+        <edge from="n10" to="n10">
+            <attr name="label">
+                <string>type:Token</string>
+            </attr>
+        </edge>
+        <edge from="n13" to="n13">
+            <attr name="label">
+                <string>type:State</string>
+            </attr>
+        </edge>
+        <edge from="n13" to="n25">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n22" to="n22">
+            <attr name="label">
+                <string>type:State</string>
+            </attr>
+        </edge>
+        <edge from="n22" to="n15">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n26" to="n26">
+            <attr name="label">
+                <string>type:State</string>
+            </attr>
+        </edge>
+        <edge from="n26" to="n35">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n14" to="n14">
+            <attr name="label">
+                <string>type:Place</string>
+            </attr>
+        </edge>
+        <edge from="n14" to="n16">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n29" to="n29">
+            <attr name="label">
+                <string>type:Place</string>
+            </attr>
+        </edge>
+        <edge from="n29" to="n17">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n25" to="n25">
+            <attr name="label">
+                <string>string:"available"</string>
+            </attr>
+        </edge>
+        <edge from="n15" to="n15">
+            <attr name="label">
+                <string>string:"available"</string>
+            </attr>
+        </edge>
+        <edge from="n35" to="n35">
+            <attr name="label">
+                <string>string:"end_2P"</string>
+            </attr>
+        </edge>
+        <edge from="n16" to="n16">
+            <attr name="label">
+                <string>string:"start"</string>
+            </attr>
+        </edge>
+        <edge from="n31" to="n31">
+            <attr name="label">
+                <string>string:"r1_preWork"</string>
+            </attr>
+        </edge>
+        <edge from="n17" to="n17">
+            <attr name="label">
+                <string>string:"r2_preWork"</string>
+            </attr>
+        </edge>
+        <edge from="n18" to="n18">
+            <attr name="label">
+                <string>string:"r1_postWork"</string>
+            </attr>
+        </edge>
+        <edge from="n30" to="n30">
+            <attr name="label">
+                <string>type:Place</string>
+            </attr>
+        </edge>
+        <edge from="n30" to="n18">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n21" to="n21">
+            <attr name="label">
+                <string>type:Place</string>
+            </attr>
+        </edge>
+        <edge from="n21" to="n33">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n33" to="n33">
+            <attr name="label">
+                <string>string:"r2_postWork"</string>
+            </attr>
+        </edge>
+        <edge from="n32" to="n32">
+            <attr name="label">
+                <string>type:Resource</string>
+            </attr>
+        </edge>
+        <edge from="n32" to="n34">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n32" to="n13">
+            <attr name="label">
+                <string>currentState</string>
+            </attr>
+        </edge>
+        <edge from="n19" to="n19">
+            <attr name="label">
+                <string>type:OneResourceProcess</string>
+            </attr>
+        </edge>
+        <edge from="n19" to="n32">
+            <attr name="label">
+                <string>r1</string>
+            </attr>
+        </edge>
+        <edge from="n19" to="n12">
+            <attr name="label">
+                <string>r2</string>
+            </attr>
+        </edge>
+        <edge from="n19" to="n14">
+            <attr name="label">
+                <string>place</string>
+            </attr>
+        </edge>
+        <edge from="n19" to="n27">
+            <attr name="label">
+                <string>place</string>
+            </attr>
+        </edge>
+        <edge from="n19" to="n30">
+            <attr name="label">
+                <string>place</string>
+            </attr>
+        </edge>
+        <edge from="n19" to="n29">
+            <attr name="label">
+                <string>place</string>
+            </attr>
+        </edge>
+        <edge from="n19" to="n21">
+            <attr name="label">
+                <string>place</string>
+            </attr>
+        </edge>
+        <edge from="n19" to="n6">
+            <attr name="label">
+                <string>place</string>
+            </attr>
+        </edge>
+        <edge from="n34" to="n34">
+            <attr name="label">
+                <string>string:"r1"</string>
+            </attr>
+        </edge>
+        <edge from="n12" to="n12">
+            <attr name="label">
+                <string>type:Resource</string>
+            </attr>
+        </edge>
+        <edge from="n12" to="n37">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n12" to="n22">
+            <attr name="label">
+                <string>currentState</string>
+            </attr>
+        </edge>
+        <edge from="n37" to="n37">
+            <attr name="label">
+                <string>string:"r2"</string>
+            </attr>
+        </edge>
+        <edge from="n20" to="n20">
+            <attr name="label">
+                <string>type:TwoResourceProcess</string>
+            </attr>
+        </edge>
+        <edge from="n20" to="n32">
+            <attr name="label">
+                <string>r1</string>
+            </attr>
+        </edge>
+        <edge from="n20" to="n12">
+            <attr name="label">
+                <string>r2</string>
+            </attr>
+        </edge>
+        <edge from="n20" to="n26">
+            <attr name="label">
+                <string>currentState</string>
+            </attr>
+        </edge>
+        <edge from="n27" to="n27">
+            <attr name="label">
+                <string>type:Place</string>
+            </attr>
+        </edge>
+        <edge from="n27" to="n31">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+    </graph>
+</gxl>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gxl xmlns="http://www.gupro.de/GXL/gxl-1.0.dtd">
+    <graph role="rule" edgeids="false" edgemode="directed" id="release_r1_by_2P">
+        <attr name="$version">
+            <string>curly</string>
+        </attr>
+        <node id="n10">
+            <attr name="layout">
+                <string>186 207 31 18</string>
+            </attr>
+        </node>
+        <node id="n13">
+            <attr name="layout">
+                <string>329 206 31 18</string>
+            </attr>
+        </node>
+        <node id="n17">
+            <attr name="layout">
+                <string>97 315 96 18</string>
+            </attr>
+        </node>
+        <node id="n8">
+            <attr name="layout">
+                <string>291 338 51 18</string>
+            </attr>
+        </node>
+        <node id="n9">
+            <attr name="layout">
+                <string>486 214 31 18</string>
+            </attr>
+        </node>
+        <node id="n11">
+            <attr name="layout">
+                <string>664 213 31 18</string>
+            </attr>
+        </node>
+        <node id="n15">
+            <attr name="layout">
+                <string>463 287 61 18</string>
+            </attr>
+        </node>
+        <node id="n12">
+            <attr name="layout">
+                <string>652 292 61 18</string>
+            </attr>
+        </node>
+        <node id="n16">
+            <attr name="layout">
+                <string>542 104 55 18</string>
+            </attr>
+        </node>
+        <node id="n14">
+            <attr name="layout">
+                <string>548 55 22 18</string>
+            </attr>
+        </node>
+        <node id="n18">
+            <attr name="layout">
+                <string>265 96 127 18</string>
+            </attr>
+        </node>
+        <edge from="n10" to="n10">
+            <attr name="label">
+                <string>del:</string>
+            </attr>
+        </edge>
+        <edge from="n10" to="n10">
+            <attr name="label">
+                <string>type:State</string>
+            </attr>
+        </edge>
+        <edge from="n10" to="n17">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n13" to="n13">
+            <attr name="label">
+                <string>new:</string>
+            </attr>
+        </edge>
+        <edge from="n13" to="n13">
+            <attr name="label">
+                <string>type:State</string>
+            </attr>
+        </edge>
+        <edge from="n13" to="n8">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n17" to="n17">
+            <attr name="label">
+                <string>string:"r2_released_2P"</string>
+            </attr>
+        </edge>
+        <edge from="n8" to="n8">
+            <attr name="label">
+                <string>string:"end_2P"</string>
+            </attr>
+        </edge>
+        <edge from="n9" to="n9">
+            <attr name="label">
+                <string>del:</string>
+            </attr>
+        </edge>
+        <edge from="n9" to="n9">
+            <attr name="label">
+                <string>type:State</string>
+            </attr>
+        </edge>
+        <edge from="n9" to="n15">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n11" to="n11">
+            <attr name="label">
+                <string>new:</string>
+            </attr>
+        </edge>
+        <edge from="n11" to="n11">
+            <attr name="label">
+                <string>type:State</string>
+            </attr>
+        </edge>
+        <edge from="n11" to="n12">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n15" to="n15">
+            <attr name="label">
+                <string>string:"acquired"</string>
+            </attr>
+        </edge>
+        <edge from="n12" to="n12">
+            <attr name="label">
+                <string>string:"available"</string>
+            </attr>
+        </edge>
+        <edge from="n16" to="n16">
+            <attr name="label">
+                <string>type:Resource</string>
+            </attr>
+        </edge>
+        <edge from="n16" to="n14">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n16" to="n9">
+            <attr name="label">
+                <string>currentState</string>
+            </attr>
+        </edge>
+        <edge from="n16" to="n11">
+            <attr name="label">
+                <string>currentState</string>
+            </attr>
+            <attr name="layout">
+                <string>703 -42 570 113 679 222 11</string>
+            </attr>
+        </edge>
+        <edge from="n14" to="n14">
+            <attr name="label">
+                <string>string:"r1"</string>
+            </attr>
+        </edge>
+        <edge from="n18" to="n18">
+            <attr name="label">
+                <string>type:TwoResourceProcess</string>
+            </attr>
+        </edge>
+        <edge from="n18" to="n16">
+            <attr name="label">
+                <string>r1</string>
+            </attr>
+        </edge>
+        <edge from="n18" to="n10">
+            <attr name="label">
+                <string>currentState</string>
+            </attr>
+        </edge>
+        <edge from="n18" to="n13">
+            <attr name="label">
+                <string>currentState</string>
+            </attr>
+        </edge>
+    </graph>
+</gxl>

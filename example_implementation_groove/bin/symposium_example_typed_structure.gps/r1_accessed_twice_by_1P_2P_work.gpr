@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gxl xmlns="http://www.gupro.de/GXL/gxl-1.0.dtd">
+    <graph role="rule" edgeids="false" edgemode="directed" id="r1_accessed_twice_by_1P_2P_work">
+        <attr name="$version">
+            <string>curly</string>
+        </attr>
+        <node id="n8">
+            <attr name="layout">
+                <string>111 330 32 18</string>
+            </attr>
+        </node>
+        <node id="n5">
+            <attr name="layout">
+                <string>192 449 22 18</string>
+            </attr>
+        </node>
+        <node id="n13">
+            <attr name="layout">
+                <string>65 429 38 18</string>
+            </attr>
+        </node>
+        <node id="n10">
+            <attr name="layout">
+                <string>359 325 31 18</string>
+            </attr>
+        </node>
+        <node id="n7">
+            <attr name="layout">
+                <string>377 403 57 18</string>
+            </attr>
+        </node>
+        <node id="n6">
+            <attr name="layout">
+                <string>297 218 127 18</string>
+            </attr>
+        </node>
+        <node id="n9">
+            <attr name="layout">
+                <string>62 211 126 18</string>
+            </attr>
+        </node>
+        <node id="n12">
+            <attr name="layout">
+                <string>230 110 55 18</string>
+            </attr>
+        </node>
+        <node id="n11">
+            <attr name="layout">
+                <string>241 31 22 18</string>
+            </attr>
+        </node>
+        <edge from="n8" to="n8">
+            <attr name="label">
+                <string>type:Place</string>
+            </attr>
+        </edge>
+        <edge from="n8" to="n5">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n8" to="n13">
+            <attr name="label">
+                <string>token</string>
+            </attr>
+        </edge>
+        <edge from="n5" to="n5">
+            <attr name="label">
+                <string>string:"r1"</string>
+            </attr>
+        </edge>
+        <edge from="n13" to="n13">
+            <attr name="label">
+                <string>type:Token</string>
+            </attr>
+        </edge>
+        <edge from="n10" to="n10">
+            <attr name="label">
+                <string>type:State</string>
+            </attr>
+        </edge>
+        <edge from="n10" to="n7">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n7" to="n7">
+            <attr name="label">
+                <string>string:"work_2P"</string>
+            </attr>
+        </edge>
+        <edge from="n6" to="n6">
+            <attr name="label">
+                <string>type:TwoResourceProcess</string>
+            </attr>
+        </edge>
+        <edge from="n6" to="n10">
+            <attr name="label">
+                <string>currentState</string>
+            </attr>
+        </edge>
+        <edge from="n6" to="n12">
+            <attr name="label">
+                <string>r1</string>
+            </attr>
+        </edge>
+        <edge from="n9" to="n9">
+            <attr name="label">
+                <string>type:OneResourceProcess</string>
+            </attr>
+        </edge>
+        <edge from="n9" to="n8">
+            <attr name="label">
+                <string>place</string>
+            </attr>
+        </edge>
+        <edge from="n9" to="n12">
+            <attr name="label">
+                <string>r1</string>
+            </attr>
+        </edge>
+        <edge from="n12" to="n12">
+            <attr name="label">
+                <string>type:Resource</string>
+            </attr>
+        </edge>
+        <edge from="n12" to="n11">
+            <attr name="label">
+                <string>name</string>
+            </attr>
+        </edge>
+        <edge from="n11" to="n11">
+            <attr name="label">
+                <string>string:"r1"</string>
+            </attr>
+        </edge>
+    </graph>
+</gxl>
