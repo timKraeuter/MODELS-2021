@@ -29,7 +29,7 @@ G(F(end))
 ```
 Constraint 3 is analog to constraint 2.
 
-**All constraints are fulfilled by the state space,i.e., the models.**
+**All constraints are fulfilled by the state space, i.e., the models.**
 
 ## Further resources:
 - Groove Demo: [Basic functionality](https://www.youtube.com/watch?v=R2beaSQ9-NM&t=626s).
