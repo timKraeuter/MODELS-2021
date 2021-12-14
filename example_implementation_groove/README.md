@@ -26,7 +26,7 @@ The end state should eventually permanently hold (Liveness property).
 
 ### Constraint 2 - LTL property:
 ```
-!G(r1_accessed_twice_by_1P_2P_r1 | r1_accessed_twice_by_1P_2P_work | r1_accessed_twice_by_2x1P)
+G!(r1_accessed_twice_by_1P_2P_r1 | r1_accessed_twice_by_1P_2P_work | r1_accessed_twice_by_2x1P)
 ```
 Constraint 3 is analog to constraint 2.
 
